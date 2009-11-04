@@ -23,13 +23,17 @@
 @implementation JBAppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+	
+	// Configuration
 	NSUInteger times = 100;
-	NSUInteger x = 0;
+	NSStringEncoding stringEncoding = NSUTF8StringEncoding;
+	NSStringEncoding dataEncoding = stringEncoding; //NSUTF32BigEndianStringEncoding;	
 	
 	NSLog(@"Loading JSON string");
-	NSString *jsonString = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"twitter_public_timeline" ofType:@"json"]];
-	NSData *jsonData = [jsonString dataUsingEncoding:NSUTF32BigEndianStringEncoding];
+	NSString *jsonString = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"twitter_public_timeline" ofType:@"json"] encoding:stringEncoding error:nil];
+	NSData *jsonData = [jsonString dataUsingEncoding:dataEncoding];
 	NSArray *array = (NSArray *)[[CJSONDeserializer deserializer] deserialize:jsonData error:nil];
+	NSUInteger x = 0;
 	
 	NSLog(@"*** Parsing with TouchJSON");
 	NSTimeInterval touchJSONParseTotal = 0.0;
