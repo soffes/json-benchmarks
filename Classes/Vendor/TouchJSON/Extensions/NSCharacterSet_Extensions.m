@@ -1,9 +1,9 @@
 //
-//  CDataScanner_Extensions.h
-//  TouchJSON
+//  NSCharacterSet_Extensions.m
+//  TouchCode
 //
 //  Created by Jonathan Wight on 12/08/2005.
-//  Copyright (c) 2005 Jonathan Wight
+//  Copyright 2005 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,11 +27,22 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "CDataScanner.h"
+#import "NSCharacterSet_Extensions.h"
 
-@interface CDataScanner (CDataScanner_Extensions)
+@implementation NSCharacterSet (NSCharacterSet_Extensions)
 
-- (BOOL)scanCStyleComment:(NSString **)outComment;
-- (BOOL)scanCPlusPlusStyleComment:(NSString **)outComment;
+#define LF 0x000a // Line Feed
+#define FF 0x000c // Form Feed
+#define CR 0x000d // Carriage Return
+#define NEL 0x0085 // Next Line
+#define LS 0x2028 // Line Separator
+#define PS 0x2029 // Paragraph Separator
+
++ (NSCharacterSet *)linebreaksCharacterSet
+{
+unichar theCharacters[] = { LF, FF, CR, NEL, LS, PS, };
+
+return([NSCharacterSet characterSetWithCharactersInString:[NSString stringWithCharacters:theCharacters length:sizeof(theCharacters) / sizeof(*theCharacters)]]);
+}
 
 @end

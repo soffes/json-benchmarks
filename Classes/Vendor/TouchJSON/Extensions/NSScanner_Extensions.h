@@ -1,9 +1,9 @@
 //
-//  NSDictionary_JSONExtensions.m
-//  TouchJSON
+//  NSScanner_Extensions.h
+//  TouchCode
 //
-//  Created by Jonathan Wight on 04/17/08.
-//  Copyright (c) 2008 Jonathan Wight
+//  Created by Jonathan Wight on 12/08/2005.
+//  Copyright 2005 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,15 +27,18 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "NSDictionary_JSONExtensions.h"
+#import <Foundation/Foundation.h>
 
-#import "CJSONDeserializer.h"
+@interface NSScanner (NSScanner_Extensions)
 
-@implementation NSDictionary (NSDictionary_JSONExtensions)
+- (NSString *)remainingString;
 
-+ (id)dictionaryWithJSONData:(NSData *)inData error:(NSError **)outError
-{
-return([[CJSONDeserializer deserializer] deserialize:inData error:outError]);
-}
+- (unichar)currentCharacter;
+- (unichar)scanCharacter;
+- (BOOL)scanCharacter:(unichar)inCharacter;
+- (void)backtrack:(unsigned)inCount;
+
+- (BOOL)scanCStyleComment:(NSString **)outComment;
+- (BOOL)scanCPlusPlusStyleComment:(NSString **)outComment;
 
 @end

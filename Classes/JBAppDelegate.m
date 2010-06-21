@@ -16,6 +16,9 @@
 #import "NSString+SBJSON.h"
 #import "NSObject+SBJSON.h"
 
+// YAJL
+#import "NSObject+YAJL.h"
+
 // Apple JSON
 #import "JSONParser.h"
 #import "JSONWriter.h"
@@ -26,100 +29,127 @@
 	
 	// Configuration
 	NSUInteger times = 100;
+	NSLog(@"Starting benchmarks with %i iterations for each library\n", times);
 	NSStringEncoding stringEncoding = NSUTF8StringEncoding;
 	NSStringEncoding dataEncoding = stringEncoding; //NSUTF32BigEndianStringEncoding;	
 	
-	NSLog(@"Loading JSON string");
+	// Load JSON string
 	NSString *jsonString = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"twitter_public_timeline" ofType:@"json"] encoding:stringEncoding error:nil];
 	NSData *jsonData = [jsonString dataUsingEncoding:dataEncoding];
 	NSArray *array = (NSArray *)[[CJSONDeserializer deserializer] deserialize:jsonData error:nil];
 	NSUInteger x = 0;
 	
-	NSLog(@"*** Parsing with TouchJSON");
-	NSTimeInterval touchJSONParseTotal = 0.0;
+	// Read with TouchJSON
+	NSTimeInterval touchJSONReadTotal = 0.0;
 	for (x = 0; x < times; x++) {
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 		NSDate *before = [NSDate date];
 		id object = [[CJSONDeserializer deserializer] deserialize:jsonData error:nil];
 		NSDate *after = [NSDate date];
-		[object description]; // Eliminate warning
 		NSTimeInterval time = [after timeIntervalSinceDate:before];
-		touchJSONParseTotal += time;
+		touchJSONReadTotal += time;
+		[object description]; // Eliminate warning
 		[pool release];
 	}
-	NSLog(@"  * TouchJSON average parse time: %f", (touchJSONParseTotal / times));
+	NSLog(@"TouchJSON average read time: %f", (touchJSONReadTotal / times));
 	
-	NSLog(@"*** Parsing with JSON Framework");
-	NSTimeInterval jsonFrameworkParseTotal = 0.0;
-	for (x = 0; x < times; x++) {
-		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-		NSDate *before = [NSDate date];
-		id object = [jsonString JSONValue];
-		NSDate *after = [NSDate date];
-		[object description]; // Eliminate warning
-		NSTimeInterval time = [after timeIntervalSinceDate:before];
-		jsonFrameworkParseTotal += time;
-		[pool release];
-	}
-	NSLog(@"  * JSON Framework average parse time: %f", (jsonFrameworkParseTotal / times));
-	
-	NSLog(@"*** Parsing with Apple JSON");
-	NSTimeInterval appleJSONParseTotal = 0.0;
-	for (x = 0; x < times; x++) {
-		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-		NSDate *before = [NSDate date];
-		id object = [JSON objectWithData:jsonData options:0 error:nil];
-		NSDate *after = [NSDate date];
-		[object description]; // Eliminate warning
-		NSTimeInterval time = [after timeIntervalSinceDate:before];
-		appleJSONParseTotal += time;
-		[pool release];
-	}
-	NSLog(@"  * Apple JSON average parse time: %f", (appleJSONParseTotal / times));
-	
-	NSLog(@"*** Writing with TouchJSON");
+	// Write with TouchJSON
 	NSTimeInterval touchJSONWriteTotal = 0.0;
 	for (x = 0; x < times; x++) {
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 		NSDate *before = [NSDate date];
 		NSString *writtenString = [[CJSONSerializer serializer] serializeArray:array];
 		NSDate *after = [NSDate date];
-		[writtenString description]; // Eliminate warning
 		NSTimeInterval time = [after timeIntervalSinceDate:before];
 		touchJSONWriteTotal += time;
+		[writtenString description]; // Eliminate warning
 		[pool release];
 	}
-	NSLog(@"  * TouchJSON average write time: %f", (touchJSONWriteTotal / times));
+	NSLog(@"TouchJSON average write time: %f", (touchJSONWriteTotal / times));
 	
-	NSLog(@"*** Parsing with JSON Framework");
+	// Read with JSON Framework
+	NSTimeInterval jsonFrameworkReadTotal = 0.0;
+	for (x = 0; x < times; x++) {
+		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+		NSDate *before = [NSDate date];
+		id object = [jsonString JSONValue];
+		NSDate *after = [NSDate date];
+		NSTimeInterval time = [after timeIntervalSinceDate:before];
+		jsonFrameworkReadTotal += time;
+		[object description]; // Eliminate warning
+		[pool release];
+	}
+	NSLog(@"JSON Framework average read time: %f", (jsonFrameworkReadTotal / times));
+	
+	// Write with JSON Framework
 	NSTimeInterval jsonFrameworkWriteTotal = 0.0;
 	for (x = 0; x < times; x++) {
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 		NSDate *before = [NSDate date];
 		NSString *writtenString = [array JSONRepresentation];
 		NSDate *after = [NSDate date];
-		[writtenString description]; // Eliminate warning
 		NSTimeInterval time = [after timeIntervalSinceDate:before];
 		jsonFrameworkWriteTotal += time;
+		[writtenString description]; // Eliminate warning
 		[pool release];
 	}
-	NSLog(@"  * JSON Framework average write time: %f", (jsonFrameworkWriteTotal / times));
+	NSLog(@"JSON Framework average write time: %f", (jsonFrameworkWriteTotal / times));
 	
-	NSLog(@"*** Parsing with Apple JSON");
+	// Read with YAJL
+	NSTimeInterval yajlReadTotal = 0.0;
+	for (x = 0; x < times; x++) {
+		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+		NSDate *before = [NSDate date];
+		id object = [jsonString yajl_JSON];
+		NSDate *after = [NSDate date];
+		NSTimeInterval time = [after timeIntervalSinceDate:before];
+		yajlReadTotal += time;
+		[object description]; // Eliminate warning
+		[pool release];
+	}
+	NSLog(@"YAJL average read time: %f", (yajlReadTotal / times));
+	
+	NSTimeInterval yajlWriteTotal = 0.0;
+	for (x = 0; x < times; x++) {
+		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+		NSDate *before = [NSDate date];
+		NSString *writtenString = [array yajl_JSONString];
+		NSDate *after = [NSDate date];
+		NSTimeInterval time = [after timeIntervalSinceDate:before];
+		yajlWriteTotal += time;
+		[writtenString description]; // Eliminate warning
+		[pool release];
+	}
+	NSLog(@"YAJL average write time: %f", (yajlWriteTotal / times));
+	
+	NSTimeInterval appleJSONReadTotal = 0.0;
+	for (x = 0; x < times; x++) {
+		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+		NSDate *before = [NSDate date];
+		id object = [JSON objectWithData:jsonData options:0 error:nil];
+		NSDate *after = [NSDate date];
+		NSTimeInterval time = [after timeIntervalSinceDate:before];
+		appleJSONReadTotal += time;
+		[object description]; // Eliminate warning
+		[pool release];
+	}
+	NSLog(@"Apple JSON average read time: %f", (appleJSONReadTotal / times));
+	
 	NSTimeInterval appleJSONWriteTotal = 0.0;
 	for (x = 0; x < times; x++) {
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 		NSDate *before = [NSDate date];
 		NSString *writtenString = [JSON stringWithObject:array options:0 error:nil];
 		NSDate *after = [NSDate date];
-		[writtenString description]; // Eliminate warning
 		NSTimeInterval time = [after timeIntervalSinceDate:before];
 		appleJSONWriteTotal += time;
+		[writtenString description]; // Eliminate warning
 		[pool release];
 	}
-	NSLog(@"  * Apple JSON average write time: %f", (appleJSONWriteTotal / times));
+	NSLog(@"Apple JSON average write time: %f", (appleJSONWriteTotal / times));
 	
-	NSLog(@"*** DONE");
+	NSLog(@"Done. Quitting...");
+	abort();
 }
 
 @end

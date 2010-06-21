@@ -1,9 +1,9 @@
 //
 //  NSScanner_Extensions.m
-//  TouchJSON
+//  TouchCode
 //
 //  Created by Jonathan Wight on 12/08/2005.
-//  Copyright (c) 2005 Jonathan Wight
+//  Copyright 2005 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,11 +27,49 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "CDataScanner_Extensions.h"
+#import "NSScanner_Extensions.h"
 
 #import "NSCharacterSet_Extensions.h"
 
-@implementation CDataScanner (CDataScanner_Extensions)
+@implementation NSScanner (NSScanner_Extensions)
+
+- (NSString *)remainingString
+{
+return([[self string] substringFromIndex:[self scanLocation]]);
+}
+
+- (unichar)currentCharacter
+{
+return([[self string] characterAtIndex:[self scanLocation]]);
+}
+
+- (unichar)scanCharacter
+{
+unsigned theScanLocation = [self scanLocation];
+unichar theCharacter = [[self string] characterAtIndex:theScanLocation];
+[self setScanLocation:theScanLocation + 1];
+return(theCharacter);
+}
+
+- (BOOL)scanCharacter:(unichar)inCharacter
+{
+unsigned theScanLocation = [self scanLocation];
+if ([[self string] characterAtIndex:theScanLocation] == inCharacter)
+	{
+	[self setScanLocation:theScanLocation + 1];
+	return(YES);
+	}
+else
+	return(NO);
+}
+
+- (void)backtrack:(unsigned)inCount
+{
+unsigned theScanLocation = [self scanLocation];
+if (inCount > theScanLocation)
+	[NSException raise:NSGenericException format:@"Backtracked too far."];
+[self setScanLocation:theScanLocation - inCount];
+}
 
 - (BOOL)scanCStyleComment:(NSString **)outComment
 {

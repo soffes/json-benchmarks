@@ -1,9 +1,9 @@
 //
-//  NSCharacterSet_Extensions.m
-//  TouchJSON
+//  NSDictionary_JSONExtensions.m
+//  TouchCode
 //
-//  Created by Jonathan Wight on 12/08/2005.
-//  Copyright (c) 2005 Jonathan Wight
+//  Created by Jonathan Wight on 04/17/08.
+//  Copyright 2008 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,22 +27,15 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "NSCharacterSet_Extensions.h"
+#import "NSDictionary_JSONExtensions.h"
 
-@implementation NSCharacterSet (NSCharacterSet_Extensions)
+#import "CJSONDeserializer.h"
 
-#define LF 0x000a // Line Feed
-#define FF 0x000c // Form Feed
-#define CR 0x000d // Carriage Return
-#define NEL 0x0085 // Next Line
-#define LS 0x2028 // Line Separator
-#define PS 0x2029 // Paragraph Separator
+@implementation NSDictionary (NSDictionary_JSONExtensions)
 
-+ (NSCharacterSet *)linebreaksCharacterSet
++ (id)dictionaryWithJSONData:(NSData *)inData error:(NSError **)outError
 {
-unichar theCharacters[] = { LF, FF, CR, NEL, LS, PS, };
-
-return([NSCharacterSet characterSetWithCharactersInString:[NSString stringWithCharacters:theCharacters length:sizeof(theCharacters) / sizeof(*theCharacters)]]);
+return([[CJSONDeserializer deserializer] deserialize:inData error:outError]);
 }
 
 @end

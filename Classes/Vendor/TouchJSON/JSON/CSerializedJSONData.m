@@ -1,9 +1,9 @@
 //
-//  CJSONSerializer.h
-//  TouchJSON
+//  CSerializedJSONData.m
+//  TouchCode
 //
-//  Created by Jonathan Wight on 12/07/2005.
-//  Copyright (c) 2005 Jonathan Wight
+//  Created by Jonathan Wight on 10/23/09.
+//  Copyright 2009 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,19 +27,28 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "CSerializedJSONData.h"
 
-@interface CJSONSerializer : NSObject {
+@implementation CSerializedJSONData
+
+@synthesize data;
+
+- (id)initWithData:(NSData *)inData;
+{
+if ((self = [self init]) != NULL)
+	{
+	data = inData;
+	}
+return(self);
 }
 
-+ (id)serializer;
+- (void)dealloc
+{
+[data release];
+data = NULL;
+//
+[super dealloc];
+}
 
-- (NSString *)serializeObject:(id)inObject;
-
-- (NSString *)serializeNull:(NSNull *)inNull;
-- (NSString *)serializeNumber:(NSNumber *)inNumber;
-- (NSString *)serializeString:(NSString *)inString;
-- (NSString *)serializeArray:(NSArray *)inArray;
-- (NSString *)serializeDictionary:(NSDictionary *)inDictionary;
 
 @end

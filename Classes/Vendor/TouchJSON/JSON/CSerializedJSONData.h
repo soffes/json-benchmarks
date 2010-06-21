@@ -1,9 +1,9 @@
 //
-//  NSCharacterSet_Extensions.h
-//  TouchJSON
+//  CSerializedJSONData.h
+//  TouchCode
 //
-//  Created by Jonathan Wight on 12/08/2005.
-//  Copyright (c) 2005 Jonathan Wight
+//  Created by Jonathan Wight on 10/23/09.
+//  Copyright 2009 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -29,8 +29,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSCharacterSet (NSCharacterSet_Extensions)
+@interface CSerializedJSONData : NSObject {
+	NSData *data;
+}
 
-+ (NSCharacterSet *)linebreaksCharacterSet;
+@property (readonly, nonatomic, retain) NSData *data;
+
+- (id)initWithData:(NSData *)inData;
 
 @end

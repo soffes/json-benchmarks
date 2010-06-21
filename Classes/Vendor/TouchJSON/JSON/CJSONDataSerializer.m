@@ -1,9 +1,9 @@
 //
-//  CJSONSerializer.m
-//  TouchJSON
+//  CJSONDataSerializer.m
+//  TouchCode
 //
 //  Created by Jonathan Wight on 12/07/2005.
-//  Copyright (c) 2005 Jonathan Wight
+//  Copyright 2005 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,18 +27,41 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "CJSONSerializer.h"
+#import "CJSONDataSerializer.h"
 
-@implementation CJSONSerializer
+#import "CSerializedJSONData.h"
+
+static NSData *kNULL = NULL;
+static NSData *kFalse = NULL;
+static NSData *kTrue = NULL;
+
+@implementation CJSONDataSerializer
+
++ (void)initialize
+{
+NSAutoreleasePool *thePool = [[NSAutoreleasePool alloc] init];
+
+@synchronized(@"CJSONDataSerializer")
+	{
+	if (kNULL == NULL)
+		kNULL = [[NSData alloc] initWithBytesNoCopy:"null" length:4 freeWhenDone:NO];
+	if (kFalse == NULL)
+		kFalse = [[NSData alloc] initWithBytesNoCopy:"false" length:5 freeWhenDone:NO];
+	if (kTrue == NULL)
+		kTrue = [[NSData alloc] initWithBytesNoCopy:"true" length:4 freeWhenDone:NO];
+	}
+
+[thePool release];
+}
 
 + (id)serializer
 {
 return([[[self alloc] init] autorelease]);
 }
 
-- (NSString *)serializeObject:(id)inObject;
+- (NSData *)serializeObject:(id)inObject;
 {
-NSString *theResult = @"";
+NSData *theResult = NULL;
 
 if ([inObject isKindOfClass:[NSNull class]])
 	{
@@ -65,6 +88,10 @@ else if ([inObject isKindOfClass:[NSData class]])
 	NSString *theString = [[[NSString alloc] initWithData:inObject encoding:NSUTF8StringEncoding] autorelease];
 	theResult = [self serializeString:theString];
 	}
+else if ([inObject isKindOfClass:[CSerializedJSONData class]])
+	{
+	theResult = [inObject data];
+	}
 else
 	{
 	[NSException raise:NSGenericException format:@"Cannot serialize data of type '%@'", NSStringFromClass([inObject class])];
@@ -74,49 +101,49 @@ if (theResult == NULL)
 return(theResult);
 }
 
-- (NSString *)serializeNull:(NSNull *)inNull
+- (NSData *)serializeNull:(NSNull *)inNull
 {
 #pragma unused (inNull)
-return(@"null");
+return(kNULL);
 }
 
-- (NSString *)serializeNumber:(NSNumber *)inNumber
+- (NSData *)serializeNumber:(NSNumber *)inNumber
 {
-NSString *theResult = NULL;
+NSData *theResult = NULL;
 switch (CFNumberGetType((CFNumberRef)inNumber))
 	{
 	case kCFNumberCharType:
 		{
 		int theValue = [inNumber intValue];
 		if (theValue == 0)
-			theResult = @"false";
+			theResult = kFalse;
 		else if (theValue == 1)
-			theResult = @"true";
+			theResult = kTrue;
 		else
-			theResult = [inNumber stringValue];
+			theResult = [[inNumber stringValue] dataUsingEncoding:NSASCIIStringEncoding];
 		}
 		break;
+	case kCFNumberFloat32Type:
+	case kCFNumberFloat64Type:
+	case kCFNumberFloatType:
+	case kCFNumberDoubleType:
 	case kCFNumberSInt8Type:
 	case kCFNumberSInt16Type:
 	case kCFNumberSInt32Type:
 	case kCFNumberSInt64Type:
-	case kCFNumberFloat32Type:
-	case kCFNumberFloat64Type:
 	case kCFNumberShortType:
 	case kCFNumberIntType:
 	case kCFNumberLongType:
 	case kCFNumberLongLongType:
-	case kCFNumberFloatType:
-	case kCFNumberDoubleType:
 	case kCFNumberCFIndexType:
 	default:
-		theResult = [inNumber stringValue];
+		theResult = [[inNumber stringValue] dataUsingEncoding:NSASCIIStringEncoding];
 		break;
 	}
 return(theResult);
 }
 
-- (NSString *)serializeString:(NSString *)inString
+- (NSData *)serializeString:(NSString *)inString
 {
 NSMutableString *theMutableCopy = [[inString mutableCopy] autorelease];
 [theMutableCopy replaceOccurrencesOfString:@"\\" withString:@"\\\\" options:0 range:NSMakeRange(0, [theMutableCopy length])];
@@ -125,7 +152,7 @@ NSMutableString *theMutableCopy = [[inString mutableCopy] autorelease];
 [theMutableCopy replaceOccurrencesOfString:@"\b" withString:@"\\b" options:0 range:NSMakeRange(0, [theMutableCopy length])];
 [theMutableCopy replaceOccurrencesOfString:@"\f" withString:@"\\f" options:0 range:NSMakeRange(0, [theMutableCopy length])];
 [theMutableCopy replaceOccurrencesOfString:@"\n" withString:@"\\n" options:0 range:NSMakeRange(0, [theMutableCopy length])];
-[theMutableCopy replaceOccurrencesOfString:@"\n" withString:@"\\n" options:0 range:NSMakeRange(0, [theMutableCopy length])];
+[theMutableCopy replaceOccurrencesOfString:@"\r" withString:@"\\r" options:0 range:NSMakeRange(0, [theMutableCopy length])];
 [theMutableCopy replaceOccurrencesOfString:@"\t" withString:@"\\t" options:0 range:NSMakeRange(0, [theMutableCopy length])];
 /*
 			case 'u':
@@ -145,27 +172,35 @@ NSMutableString *theMutableCopy = [[inString mutableCopy] autorelease];
 					}
 				}
 */
-return([NSString stringWithFormat:@"\"%@\"", theMutableCopy]);
+return([[NSString stringWithFormat:@"\"%@\"", theMutableCopy] dataUsingEncoding:NSUTF8StringEncoding]);
 }
 
-- (NSString *)serializeArray:(NSArray *)inArray
+- (NSData *)serializeArray:(NSArray *)inArray
 {
-NSMutableString *theString = [NSMutableString string];
+NSMutableData *theData = [NSMutableData data];
+
+[theData appendBytes:"[" length:1];
 
 NSEnumerator *theEnumerator = [inArray objectEnumerator];
 id theValue = NULL;
+NSUInteger i = 0;
 while ((theValue = [theEnumerator nextObject]) != NULL)
 	{
-	[theString appendString:[self serializeObject:theValue]];
-	if (theValue != [inArray lastObject])
-		[theString appendString:@","];
+	[theData appendData:[self serializeObject:theValue]];
+	if (++i < [inArray count])
+		[theData appendBytes:"," length:1];
 	}
-return([NSString stringWithFormat:@"[%@]", theString]);
+
+[theData appendBytes:"]" length:1];
+
+return(theData);
 }
 
-- (NSString *)serializeDictionary:(NSDictionary *)inDictionary
+- (NSData *)serializeDictionary:(NSDictionary *)inDictionary
 {
-NSMutableString *theString = [NSMutableString string];
+NSMutableData *theData = [NSMutableData data];
+
+[theData appendBytes:"{" length:1];
 
 NSArray *theKeys = [inDictionary allKeys];
 NSEnumerator *theEnumerator = [theKeys objectEnumerator];
@@ -174,11 +209,17 @@ while ((theKey = [theEnumerator nextObject]) != NULL)
 	{
 	id theValue = [inDictionary objectForKey:theKey];
 	
-	[theString appendFormat:@"%@:%@", [self serializeString:theKey], [self serializeObject:theValue]];
+	[theData appendData:[self serializeString:theKey]];
+	[theData appendBytes:":" length:1];
+	[theData appendData:[self serializeObject:theValue]];
+	
 	if (theKey != [theKeys lastObject])
-		[theString appendString:@","];
+		[theData appendData:[@"," dataUsingEncoding:NSASCIIStringEncoding]];
 	}
-return([NSString stringWithFormat:@"{%@}", theString]);
+
+[theData appendBytes:"}" length:1];
+
+return(theData);
 }
 
 @end

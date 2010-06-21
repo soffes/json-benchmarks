@@ -1,9 +1,9 @@
 //
-//  CJSONDeserializer.h
-//  TouchJSON
+//  CJSONSerializer.m
+//  TouchCode
 //
-//  Created by Jonathan Wight on 12/15/2005.
-//  Copyright (c) 2005 Jonathan Wight
+//  Created by Jonathan Wight on 12/07/2005.
+//  Copyright 2005 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,33 +27,49 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "CJSONSerializer.h"
 
-extern NSString *const kJSONDeserializerErrorDomain /* = @"CJSONDeserializerErrorDomain" */;
+#import "CJSONDataSerializer.h"
 
-@protocol CDeserializerProtocol <NSObject>
+@implementation CJSONSerializer
 
-- (id)deserializeAsDictionary:(NSData *)inData error:(NSError **)outError;
-
-@end
-
-#pragma mark -
-
-@interface CJSONDeserializer : NSObject <CDeserializerProtocol> {
-
++ (id)serializer
+{
+return([[[self alloc] init] autorelease]);
 }
 
-+ (id)deserializer;
+- (id)init
+{
+if ((self = [super init]) != NULL)
+	{
+	serializer = [[CJSONDataSerializer alloc] init];
+	}
+return(self);
+}
 
-- (id)deserializeAsDictionary:(NSData *)inData error:(NSError **)outError;
+- (void)dealloc
+{
+[serializer release];
+serializer = NULL;
+//
+[super dealloc];
+}
 
-@end
+- (NSString *)serializeObject:(id)inObject;
+{
+NSData *theData = [serializer serializeObject:inObject];
+return([[[NSString alloc] initWithData:theData encoding:NSUTF8StringEncoding] autorelease]);
+}
 
-#pragma mark -
+- (NSString *)serializeArray:(NSArray *)inArray
+{
+NSData *theData = [serializer serializeArray:inArray];
+return([[[NSString alloc] initWithData:theData encoding:NSUTF8StringEncoding] autorelease]);
+}
 
-@interface CJSONDeserializer (CJSONDeserializer_Deprecated)
-
-/// You should switch to using deserializeAsDictionary:error: instead.
-- (id)deserialize:(NSData *)inData error:(NSError **)outError;
-
+- (NSString *)serializeDictionary:(NSDictionary *)inDictionary;
+{
+NSData *theData = [serializer serializeDictionary:inDictionary];
+return([[[NSString alloc] initWithData:theData encoding:NSUTF8StringEncoding] autorelease]);
+}
 @end

@@ -1,9 +1,9 @@
 //
-//  NSScanner_Extensions.h
-//  CocoaJSON
+//  CJSONScanner.h
+//  TouchCode
 //
-//  Created by Jonathan Wight on 12/08/2005.
-//  Copyright (c) 2005 Jonathan Wight
+//  Created by Jonathan Wight on 12/07/2005.
+//  Copyright 2005 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,18 +27,21 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "CDataScanner.h"
 
-@interface NSScanner (NSScanner_Extensions)
+/// CDataScanner subclass that understands JSON syntax natively. You should generally use CJSONDeserializer instead of this class. (TODO - this could have been a category?)
+@interface CJSONScanner : CDataScanner {
+	BOOL strictEscapeCodes;
+}
 
-- (NSString *)remainingString;
+@property (readonly, nonatomic, assign) BOOL strictEscapeCodes;
 
-- (unichar)currentCharacter;
-- (unichar)scanCharacter;
-- (BOOL)scanCharacter:(unichar)inCharacter;
-- (void)backtrack:(unsigned)inCount;
-
-- (BOOL)scanCStyleComment:(NSString **)outComment;
-- (BOOL)scanCPlusPlusStyleComment:(NSString **)outComment;
+- (BOOL)scanJSONObject:(id *)outObject error:(NSError **)outError;
+- (BOOL)scanJSONDictionary:(NSDictionary **)outDictionary error:(NSError **)outError;
+- (BOOL)scanJSONArray:(NSArray **)outArray error:(NSError **)outError;
+- (BOOL)scanJSONStringConstant:(NSString **)outStringConstant error:(NSError **)outError;
+- (BOOL)scanJSONNumberConstant:(NSNumber **)outNumberConstant error:(NSError **)outError;
 
 @end
+
+extern NSString *const kJSONScannerErrorDomain /* = @"CJSONScannerErrorDomain" */;
