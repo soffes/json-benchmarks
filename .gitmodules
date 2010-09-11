@@ -1,0 +1,3 @@
+[submodule "Classes/Vendor/yajl-objc"]
+	path = Classes/Vendor/yajl-objc
+	url = http://github.com/gabriel/yajl-objc.git
