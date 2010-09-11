@@ -13,8 +13,7 @@
 #import "CJSONSerializer.h"
 
 // JSON Framework
-#import "NSString+SBJSON.h"
-#import "NSObject+SBJSON.h"
+#import "JSON.h"
 
 // YAJL
 #import "NSObject+YAJL.h"
@@ -43,8 +42,9 @@
 	NSTimeInterval touchJSONReadTotal = 0.0;
 	for (x = 0; x < times; x++) {
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+		CJSONDeserializer *parser = [CJSONDeserializer deserializer];
 		NSDate *before = [NSDate date];
-		id object = [[CJSONDeserializer deserializer] deserialize:jsonData error:nil];
+		id object = [parser deserialize:jsonData error:nil];
 		NSDate *after = [NSDate date];
 		NSTimeInterval time = [after timeIntervalSinceDate:before];
 		touchJSONReadTotal += time;
@@ -57,8 +57,9 @@
 	NSTimeInterval touchJSONWriteTotal = 0.0;
 	for (x = 0; x < times; x++) {
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+		CJSONSerializer *writer = [CJSONSerializer serializer];
 		NSDate *before = [NSDate date];
-		NSString *writtenString = [[CJSONSerializer serializer] serializeArray:array];
+		NSString *writtenString = [writer serializeArray:array];
 		NSDate *after = [NSDate date];
 		NSTimeInterval time = [after timeIntervalSinceDate:before];
 		touchJSONWriteTotal += time;
@@ -71,8 +72,9 @@
 	NSTimeInterval jsonFrameworkReadTotal = 0.0;
 	for (x = 0; x < times; x++) {
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+		SBJsonParser *parser = [[SBJsonParser new] autorelease];
 		NSDate *before = [NSDate date];
-		id object = [jsonString JSONValue];
+		id object = [parser objectWithString:jsonString];
 		NSDate *after = [NSDate date];
 		NSTimeInterval time = [after timeIntervalSinceDate:before];
 		jsonFrameworkReadTotal += time;
@@ -85,8 +87,9 @@
 	NSTimeInterval jsonFrameworkWriteTotal = 0.0;
 	for (x = 0; x < times; x++) {
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+		SBJsonWriter *writer = [[SBJsonWriter new] autorelease];
 		NSDate *before = [NSDate date];
-		NSString *writtenString = [array JSONRepresentation];
+		NSString *writtenString = [writer stringWithObject:array];
 		NSDate *after = [NSDate date];
 		NSTimeInterval time = [after timeIntervalSinceDate:before];
 		jsonFrameworkWriteTotal += time;
