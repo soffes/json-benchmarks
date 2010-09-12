@@ -58,8 +58,7 @@ static int _compareResults(NSDictionary *result1, NSDictionary *result2, void *c
 		NSDate *before = [NSDate date];
 		id object = [JSON objectWithData:jsonData options:0 error:nil];
 		NSDate *after = [NSDate date];
-		NSTimeInterval time = [after timeIntervalSinceDate:before];
-		appleJSONReadTotal += time;
+		appleJSONReadTotal += [after timeIntervalSinceDate:before];
 		[object description]; // Eliminate warning
 		[pool release];
 	}
@@ -73,8 +72,7 @@ static int _compareResults(NSDictionary *result1, NSDictionary *result2, void *c
 		NSDate *before = [NSDate date];
 		NSString *writtenString = [JSON stringWithObject:array options:0 error:nil];
 		NSDate *after = [NSDate date];
-		NSTimeInterval time = [after timeIntervalSinceDate:before];
-		appleJSONWriteTotal += time;
+		appleJSONWriteTotal += [after timeIntervalSinceDate:before];
 		[writtenString description]; // Eliminate warning
 		[pool release];
 	}
@@ -89,8 +87,7 @@ static int _compareResults(NSDictionary *result1, NSDictionary *result2, void *c
 		NSDate *before = [NSDate date];
 		id object = [parser objectWithString:jsonString];
 		NSDate *after = [NSDate date];
-		NSTimeInterval time = [after timeIntervalSinceDate:before];
-		jsonFrameworkReadTotal += time;
+		jsonFrameworkReadTotal += [after timeIntervalSinceDate:before];
 		[object description]; // Eliminate warning
 		[pool release];
 	}
@@ -105,8 +102,7 @@ static int _compareResults(NSDictionary *result1, NSDictionary *result2, void *c
 		NSDate *before = [NSDate date];
 		NSString *writtenString = [writer stringWithObject:array];
 		NSDate *after = [NSDate date];
-		NSTimeInterval time = [after timeIntervalSinceDate:before];
-		jsonFrameworkWriteTotal += time;
+		jsonFrameworkWriteTotal += [after timeIntervalSinceDate:before];
 		[writtenString description]; // Eliminate warning
 		[pool release];
 	}
@@ -121,8 +117,7 @@ static int _compareResults(NSDictionary *result1, NSDictionary *result2, void *c
 		NSDate *before = [NSDate date];
 		id object = [jsonKitDecoder parseJSONData:jsonData];
 		NSDate *after = [NSDate date];
-		NSTimeInterval time = [after timeIntervalSinceDate:before];
-		jsonKitReadTotal += time;
+		jsonKitReadTotal += [after timeIntervalSinceDate:before];
 		[object description]; // Eliminate warning
 		[pool release];
 	}
@@ -136,8 +131,7 @@ static int _compareResults(NSDictionary *result1, NSDictionary *result2, void *c
 		NSDate *before = [NSDate date];
 		NSString *writtenString = [array JSONString];
 		NSDate *after = [NSDate date];
-		NSTimeInterval time = [after timeIntervalSinceDate:before];
-		jsonKitWriteTotal += time;
+		jsonKitWriteTotal += [after timeIntervalSinceDate:before];
 		[writtenString description]; // Eliminate warning
 		[pool release];
 	}
@@ -152,8 +146,7 @@ static int _compareResults(NSDictionary *result1, NSDictionary *result2, void *c
 		NSDate *before = [NSDate date];
 		id object = [parser deserialize:jsonData error:nil];
 		NSDate *after = [NSDate date];
-		NSTimeInterval time = [after timeIntervalSinceDate:before];
-		touchJSONReadTotal += time;
+		touchJSONReadTotal += [after timeIntervalSinceDate:before];
 		[object description]; // Eliminate warning
 		[pool release];
 	}
@@ -168,8 +161,7 @@ static int _compareResults(NSDictionary *result1, NSDictionary *result2, void *c
 		NSDate *before = [NSDate date];
 		NSString *writtenString = [writer serializeArray:array error:nil];
 		NSDate *after = [NSDate date];
-		NSTimeInterval time = [after timeIntervalSinceDate:before];
-		touchJSONWriteTotal += time;
+		touchJSONWriteTotal += [after timeIntervalSinceDate:before];
 		[writtenString description]; // Eliminate warning
 		[pool release];
 	}
@@ -183,8 +175,7 @@ static int _compareResults(NSDictionary *result1, NSDictionary *result2, void *c
 		NSDate *before = [NSDate date];
 		id object = [jsonString yajl_JSON];
 		NSDate *after = [NSDate date];
-		NSTimeInterval time = [after timeIntervalSinceDate:before];
-		yajlReadTotal += time;
+		yajlReadTotal += [after timeIntervalSinceDate:before];
 		[object description]; // Eliminate warning
 		[pool release];
 	}
@@ -198,8 +189,7 @@ static int _compareResults(NSDictionary *result1, NSDictionary *result2, void *c
 		NSDate *before = [NSDate date];
 		NSString *writtenString = [array yajl_JSONString];
 		NSDate *after = [NSDate date];
-		NSTimeInterval time = [after timeIntervalSinceDate:before];
-		yajlWriteTotal += time;
+		yajlWriteTotal += [after timeIntervalSinceDate:before];
 		[writtenString description]; // Eliminate warning
 		[pool release];
 	}

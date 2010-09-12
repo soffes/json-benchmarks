@@ -10,7 +10,6 @@
 
 	UISegmentedControl *_segmentedControl;
 	NSDictionary *_allResults;
-	BOOL _reading;
 }
 
 @end

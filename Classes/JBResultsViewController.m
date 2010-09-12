@@ -40,18 +40,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	_reading = YES;
-	
+	// Segmented control
 	NSArray *items = [[NSArray alloc] initWithObjects:@"Reading", @"Writing", nil];
 	_segmentedControl = [[UISegmentedControl alloc] initWithItems:items];
+	[items release];
+	_segmentedControl.enabled = NO;
 	_segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
 	_segmentedControl.selectedSegmentIndex = 0;
 	_segmentedControl.frame = CGRectMake(0.0, 0.0, 280.0, 32.0);
 	[_segmentedControl addTarget:self.tableView action:@selector(reloadData) forControlEvents:UIControlEventValueChanged];
-	
 	self.navigationItem.titleView = _segmentedControl;
 	
-	[items release];
+	// Indicator
+	UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	[indicator startAnimating];
+	UIBarButtonItem *indicatorItem = [[UIBarButtonItem alloc] initWithCustomView:indicator];
+	[indicator release];
+	self.navigationItem.rightBarButtonItem = indicatorItem;
+	[indicatorItem release];
 }
 
 
@@ -65,9 +71,13 @@
 
 #pragma mark Private Methods
 
-- (void)_didFinishBenchmarks:(NSNotification *)notification {
+- (void)_didFinishBenchmarks:(NSNotification *)notification {	
 	[_allResults release];
 	_allResults = [[notification object] retain];
+	
+	// Update UI
+	self.navigationItem.rightBarButtonItem = nil;
+	_segmentedControl.enabled = YES;
 	[self.tableView reloadData];
 }
 
