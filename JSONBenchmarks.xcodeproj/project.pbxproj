@@ -519,7 +519,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = JSONBenchmarks;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -543,7 +543,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = JSONBenchmarks;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
