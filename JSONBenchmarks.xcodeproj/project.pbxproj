@@ -510,6 +510,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = JSONBenchmarks;
+				SDKROOT = iphoneos3.2;
 			};
 			name = Debug;
 		};
@@ -535,6 +536,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = JSONBenchmarks;
+				SDKROOT = iphoneos3.2;
 			};
 			name = Release;
 		};
