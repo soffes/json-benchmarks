@@ -2,7 +2,7 @@
 
 This is the code I used to write [my post about JSON benchmarks](http://samsoff.es/post/iphone-json-benchmarks) and [my updated post](http://samsoff.es/posts/updated-iphone-json-benchmarks).
 
-This is a pretty primitive way to benchmark stuff, but it works for what I'm doing. There is no UI for this app. Just look at the console.
+This is a pretty primitive way to benchmark stuff, but it works for what I'm doing. There is basic UI for this app. I kept things simple so it doesn't effect the benchmarks. Pretty charts might be cool in the future though.
 
 ## Summary
 
