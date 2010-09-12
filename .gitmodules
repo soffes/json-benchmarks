@@ -4,3 +4,9 @@
 [submodule "Classes/Vendor/json-framework"]
 	path = Classes/Vendor/json-framework
 	url = http://github.com/stig/json-framework.git
+[submodule "Classes/Vendor/JSONKit"]
+	path = Classes/Vendor/JSONKit
+	url = http://github.com/johnezang/JSONKit.git
+[submodule "Classes/Vendor/TouchJSON"]
+	path = Classes/Vendor/TouchJSON
+	url = http://github.com/schwa/TouchJSON.git
