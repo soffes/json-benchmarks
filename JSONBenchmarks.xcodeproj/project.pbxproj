@@ -513,10 +513,7 @@
 				GCC_PREFIX_HEADER = "Other Sources/JSONBenchmarks_Prefix.pch";
 				HEADER_SEARCH_PATHS = "Classes/Vendor/yajl-objc/**";
 				INFOPLIST_FILE = "Resources/JSONBenchmarks-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Classes/Vendor/libYAJLIPhone\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -540,10 +537,7 @@
 				GCC_PREFIX_HEADER = "Other Sources/JSONBenchmarks_Prefix.pch";
 				HEADER_SEARCH_PATHS = "Classes/Vendor/yajl-objc/**";
 				INFOPLIST_FILE = "Resources/JSONBenchmarks-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Classes/Vendor/libYAJLIPhone\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
