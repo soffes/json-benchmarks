@@ -10,6 +10,8 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		B20294AF123C9D4500D64200 /* JBResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20294AE123C9D4500D64200 /* JBResultsViewController.m */; };
+		B20294C2123CA12A00D64200 /* JBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B20294C1123CA12A00D64200 /* JBConstants.m */; };
 		B213445410A0BA690001FE31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B213445110A0BA690001FE31 /* main.m */; };
 		B2457E8410A164A400BD3540 /* twitter_public_timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = B2457E8310A164A400BD3540 /* twitter_public_timeline.json */; };
 		B2457ED010A1671E00BD3540 /* JBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2457ECF10A1671E00BD3540 /* JBAppDelegate.m */; };
@@ -91,6 +93,10 @@
 		1D6058910D05DD3D006BFB54 /* JSONBenchmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONBenchmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B20294AD123C9D4500D64200 /* JBResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBResultsViewController.h; sourceTree = "<group>"; };
+		B20294AE123C9D4500D64200 /* JBResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBResultsViewController.m; sourceTree = "<group>"; };
+		B20294C0123CA12A00D64200 /* JBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBConstants.h; sourceTree = "<group>"; };
+		B20294C1123CA12A00D64200 /* JBConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBConstants.m; sourceTree = "<group>"; };
 		B213445010A0BA690001FE31 /* JSONBenchmarks_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONBenchmarks_Prefix.pch; sourceTree = "<group>"; };
 		B213445110A0BA690001FE31 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B213445310A0BA690001FE31 /* JSONBenchmarks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JSONBenchmarks-Info.plist"; sourceTree = "<group>"; };
@@ -160,6 +166,8 @@
 			children = (
 				B2457ECE10A1671E00BD3540 /* JBAppDelegate.h */,
 				B2457ECF10A1671E00BD3540 /* JBAppDelegate.m */,
+				B20294AD123C9D4500D64200 /* JBResultsViewController.h */,
+				B20294AE123C9D4500D64200 /* JBResultsViewController.m */,
 				B2457E8510A164A800BD3540 /* Vendor */,
 			);
 			path = Classes;
@@ -201,6 +209,8 @@
 			children = (
 				B213445010A0BA690001FE31 /* JSONBenchmarks_Prefix.pch */,
 				B213445110A0BA690001FE31 /* main.m */,
+				B20294C0123CA12A00D64200 /* JBConstants.h */,
+				B20294C1123CA12A00D64200 /* JBConstants.m */,
 			);
 			path = "Other Sources";
 			sourceTree = "<group>";
@@ -472,6 +482,8 @@
 				B274982B123C91E000A2A9E0 /* CJSONSerializer.m in Sources */,
 				B274982C123C91E000A2A9E0 /* CSerializedJSONData.m in Sources */,
 				B2749907123C91F700A2A9E0 /* JSONKit.m in Sources */,
+				B20294AF123C9D4500D64200 /* JBResultsViewController.m in Sources */,
+				B20294C2123CA12A00D64200 /* JBConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +523,7 @@
 				);
 				PRODUCT_NAME = JSONBenchmarks;
 				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -537,6 +550,7 @@
 				);
 				PRODUCT_NAME = JSONBenchmarks;
 				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

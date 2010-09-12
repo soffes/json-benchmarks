@@ -8,6 +8,10 @@
 
 @interface JBAppDelegate : UIView <UIApplicationDelegate> {
 
+	UIWindow *_window;
+	UINavigationController *_navigationController;
 }
+
+- (void)benchmark;
 
 @end
