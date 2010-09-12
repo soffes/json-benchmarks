@@ -17,6 +17,7 @@
 #import "CJSONDeserializer.h"
 #import "CJSONSerializer.h"
 #import "NSObject+YAJL.h"
+#import "SBStatistics.h"
 
 #define times 100
 
@@ -28,20 +29,19 @@ static int _compareResults(NSDictionary *result1, NSDictionary *result2, void *c
 #define x(x) do { x; x; x; x; x; } while (0)
 
 static inline NSTimeInterval bench( NSString *what, void (^block)(void) ) {
-	NSTimeInterval duration = 0.0;
+	
+	SBStatistics *stats = [[SBStatistics new] autorelease];
 
 	for (int x = 0; x < times; x++) {
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 		NSDate *before = [NSDate date];
 		block();
-		duration += -[before timeIntervalSinceNow];
+		[stats addDouble:-[before timeIntervalSinceNow] * 1000];
 		[pool release];
 	}
 	
-	NSTimeInterval avg = duration / (double)times;
-	NSLog(@"%@ average: %.3fms", what, avg * 1000);
-	
-	return avg;
+	NSLog(@"%@ average: %.3fms, stddev: %.3f", what, stats.mean, [stats standardDeviation]);
+	return stats.mean;
 }
 
 @implementation JBAppDelegate

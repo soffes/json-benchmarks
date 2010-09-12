@@ -104,7 +104,7 @@
     
 	NSDictionary *result = [[self _results] objectAtIndex:indexPath.row];
 	cell.textLabel.text = [result objectForKey:JBLibraryKey];
-	cell.detailTextLabel.text = [NSString stringWithFormat:@"%.08f seconds", [[result objectForKey:JBAverageTimeKey] floatValue]];
+	cell.detailTextLabel.text = [NSString stringWithFormat:@"%.03f ms", [[result objectForKey:JBAverageTimeKey] floatValue]];
     
     return cell;
 }
