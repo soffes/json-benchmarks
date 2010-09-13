@@ -34,6 +34,8 @@
 		B274982B123C91E000A2A9E0 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B27497AD123C91E000A2A9E0 /* CJSONSerializer.m */; };
 		B274982C123C91E000A2A9E0 /* CSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = B27497AF123C91E000A2A9E0 /* CSerializedJSONData.m */; };
 		B2749907123C91F700A2A9E0 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B27498D9123C91F700A2A9E0 /* JSONKit.m */; };
+		BC8363B7123D8C2600E6F313 /* SBFullStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8363B1123D8C2600E6F313 /* SBFullStatistics.m */; };
+		BC8363B9123D8C2600E6F313 /* SBStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8363B5123D8C2600E6F313 /* SBStatistics.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +145,9 @@
 		B27497AF123C91E000A2A9E0 /* CSerializedJSONData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSerializedJSONData.m; sourceTree = "<group>"; };
 		B27498D8123C91F700A2A9E0 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		B27498D9123C91F700A2A9E0 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		BC8363B1123D8C2600E6F313 /* SBFullStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBFullStatistics.m; path = Statistics/Classes/SBFullStatistics.m; sourceTree = "<group>"; };
+		BC8363B4123D8C2600E6F313 /* SBStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBStatistics.h; path = Statistics/Classes/SBStatistics.h; sourceTree = "<group>"; };
+		BC8363B5123D8C2600E6F313 /* SBStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBStatistics.m; path = Statistics/Classes/SBStatistics.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +232,7 @@
 		B2457E8510A164A800BD3540 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				BC8363BA123D8C2E00E6F313 /* Statistics */,
 				B25386D411CEFCBF00608889 /* Apple JSON */,
 				B2749616123C91B800A2A9E0 /* json-framework */,
 				B2749885123C91F700A2A9E0 /* JSONKit */,
@@ -353,6 +359,16 @@
 				B27498D9123C91F700A2A9E0 /* JSONKit.m */,
 			);
 			path = JSONKit;
+			sourceTree = "<group>";
+		};
+		BC8363BA123D8C2E00E6F313 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				BC8363B1123D8C2600E6F313 /* SBFullStatistics.m */,
+				BC8363B4123D8C2600E6F313 /* SBStatistics.h */,
+				BC8363B5123D8C2600E6F313 /* SBStatistics.m */,
+			);
+			name = Statistics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -484,6 +500,8 @@
 				B2749907123C91F700A2A9E0 /* JSONKit.m in Sources */,
 				B20294AF123C9D4500D64200 /* JBResultsViewController.m in Sources */,
 				B20294C2123CA12A00D64200 /* JBConstants.m in Sources */,
+				BC8363B7123D8C2600E6F313 /* SBFullStatistics.m in Sources */,
+				BC8363B9123D8C2600E6F313 /* SBStatistics.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,7 +537,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = JSONBenchmarks;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -543,7 +561,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = JSONBenchmarks;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

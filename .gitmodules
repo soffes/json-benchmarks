@@ -10,3 +10,6 @@
 [submodule "Classes/Vendor/TouchJSON"]
 	path = Classes/Vendor/TouchJSON
 	url = http://github.com/schwa/TouchJSON.git
+[submodule "Classes/Vendor/Statistics"]
+	path = Classes/Vendor/Statistics
+	url = http://github.com/stig/Statistics.git
