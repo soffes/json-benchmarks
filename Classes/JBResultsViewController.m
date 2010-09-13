@@ -47,7 +47,7 @@
 	_segmentedControl.enabled = NO;
 	_segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
 	_segmentedControl.selectedSegmentIndex = 0;
-	_segmentedControl.frame = CGRectMake(0.0, 0.0, 280.0, 32.0);
+	_segmentedControl.frame = CGRectMake(0.0, 0.0, 300.0, 32.0);
 	[_segmentedControl addTarget:self.tableView action:@selector(reloadData) forControlEvents:UIControlEventValueChanged];
 	self.navigationItem.titleView = _segmentedControl;
 	
