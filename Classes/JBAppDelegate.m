@@ -27,7 +27,7 @@ static int _compareResults(NSDictionary *result1, NSDictionary *result2, void *c
 
 #define x(x) do { x; x; x; x; x; } while (0)
 
-static inline NSTimeInterval bench( void (^block)(void) ) {
+static inline NSTimeInterval bench( NSString *what, void (^block)(void) ) {
 	NSTimeInterval duration = 0.0;
 
 	for (int x = 0; x < times; x++) {
@@ -38,7 +38,10 @@ static inline NSTimeInterval bench( void (^block)(void) ) {
 		[pool release];
 	}
 	
-	return duration / (double)times;
+	NSTimeInterval avg = duration / (double)times;
+	NSLog(@"%@ average: %.3fms", what, avg * 1000);
+	
+	return avg;
 }
 
 @implementation JBAppDelegate
@@ -67,60 +70,50 @@ static inline NSTimeInterval bench( void (^block)(void) ) {
 	NSData *jsonData = [jsonString dataUsingEncoding:dataEncoding];
 	NSArray *array = (NSArray *)[[CJSONDeserializer deserializer] deserialize:jsonData error:nil];
 	
-	NSTimeInterval appleJSONReadAverage = bench(^{
+	NSTimeInterval appleJSONReadAverage = bench(@"Apple JSON read", ^{
 		x([JSON objectWithData:jsonData options:0 error:nil]);
 	});
-	NSLog(@"Apple JSON average read time: %f", appleJSONReadAverage);
 	
-	NSTimeInterval appleJSONWriteAverage = bench(^{
+	NSTimeInterval appleJSONWriteAverage = bench(@"Apple JSON write", ^{
 		x([JSON stringWithObject:array options:0 error:nil]);
 	});
-	NSLog(@"Apple JSON average write time: %f", appleJSONWriteAverage);
 	
 	SBJsonParser *sbjsonParser = [[SBJsonParser new] autorelease];
-	NSTimeInterval jsonFrameworkReadAverage = bench(^{
+	NSTimeInterval jsonFrameworkReadAverage = bench(@"JSON Framework read", ^{
 		x([sbjsonParser objectWithString:jsonString]);
 	});
-	NSLog(@"JSON Framework average read time: %f", jsonFrameworkReadAverage);
 	
 	SBJsonWriter *sbjsonWriter = [[SBJsonWriter new] autorelease];
-	NSTimeInterval jsonFrameworkWriteAverage = bench(^{
+	NSTimeInterval jsonFrameworkWriteAverage = bench(@"JSON Framework write", ^{
 		x([sbjsonWriter stringWithObject:array]);
 	});
-	NSLog(@"JSON Framework average write time: %f", jsonFrameworkWriteAverage);
 	
 	JSONDecoder *jsonKitDecoder = [JSONDecoder decoder];
-	NSTimeInterval jsonKitReadAverage = bench(^{
+	NSTimeInterval jsonKitReadAverage = bench(@"JSONKit read", ^{
 		x([jsonKitDecoder parseJSONData:jsonData]);
 	});
-	NSLog(@"JSONKit average read time: %f", jsonKitReadAverage);
 	
-	NSTimeInterval jsonKitWriteAverage = bench(^{
+	NSTimeInterval jsonKitWriteAverage = bench(@"JSONKit write", ^{
 		x([array JSONString]);
 	});
-	NSLog(@"JSONKit average write time: %f", jsonKitWriteAverage);
 	
 	CJSONDeserializer *cjsonDeserialiser = [CJSONDeserializer deserializer];
-	NSTimeInterval touchJSONReadAverage = bench(^{
+	NSTimeInterval touchJSONReadAverage = bench(@"TouchJSON read", ^{
 		x([cjsonDeserialiser deserialize:jsonData error:nil]);
 	});
-	NSLog(@"TouchJSON average read time: %f", touchJSONReadAverage);
 	
 	CJSONSerializer *cjsonSerializer = [CJSONSerializer serializer];
-	NSTimeInterval touchJSONWriteAverage = bench(^{
+	NSTimeInterval touchJSONWriteAverage = bench(@"TouchJSON write", ^{
 		x([cjsonSerializer serializeArray:array error:nil]);
 	});
-	NSLog(@"TouchJSON average write time: %f", touchJSONWriteAverage);
 	
-	NSTimeInterval yajlReadAverage = bench(^{
+	NSTimeInterval yajlReadAverage = bench(@"YAJL read", ^{
 		x([jsonString yajl_JSON]);
 	});
-	NSLog(@"YAJL average read time: %f", yajlReadAverage);
 	
-	NSTimeInterval yajlWriteAverage = bench(^{
+	NSTimeInterval yajlWriteAverage = bench(@"YAJL write", ^{
 		x([array yajl_JSONString]);
 	});
-	NSLog(@"YAJL average write time: %f", yajlWriteAverage);
 	
 	// Done. Construct results
 	NSMutableArray *readingResults = [[NSMutableArray alloc] initWithObjects:
