@@ -40,7 +40,7 @@ static inline NSTimeInterval bench( NSString *what, void (^block)(void) ) {
 		[pool release];
 	}
 	
-	NSLog(@"%@ average: %.3fms, stddev: %.3f", what, stats.mean, [stats standardDeviation]);
+	NSLog(@"%@ min/mean/max (ms): %.3f/%.3f/%.3f - stddev: %.3f", what, stats.min, stats.mean, stats.max, [stats standardDeviation]);
 	return stats.mean;
 }
 
