@@ -38,8 +38,8 @@ static inline NSTimeInterval bench( NSString *what, void (^block)(void) ) {
 		[pool release];
 	}
 	
-	NSTimeInterval avg = duration / (double)times;
-	NSLog(@"%@ average: %.3fms", what, avg * 1000);
+	NSTimeInterval avg = duration / (double)times * 1000;
+	NSLog(@"%@ average: %.3fms", what, avg);
 	
 	return avg;
 }
