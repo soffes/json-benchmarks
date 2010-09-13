@@ -20,19 +20,19 @@
 #import "SBStatistics.h"
 
 #define times 100
+#define x(x) do { x; x; x; x; x; } while (0)
 
 // Comparer function for sorting
 static int _compareResults(NSDictionary *result1, NSDictionary *result2, void *context) {
 	return [[result1 objectForKey:JBAverageTimeKey] compare:[result2 objectForKey:JBAverageTimeKey]];
 }
 
-#define x(x) do { x; x; x; x; x; } while (0)
-
-static inline NSTimeInterval bench( NSString *what, void (^block)(void) ) {
+// Benchmark function
+static inline NSTimeInterval bench(NSString *what, void (^block)(void)) {
 	
 	SBStatistics *stats = [[SBStatistics new] autorelease];
 
-	for (int x = 0; x < times; x++) {
+	for (NSInteger i = 0; i < times; i++) {
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 		NSDate *before = [NSDate date];
 		block();
@@ -116,6 +116,7 @@ static inline NSTimeInterval bench( NSString *what, void (^block)(void) ) {
 	});
 	
 	// Done. Construct results
+	// TODO: This is ugly. Clean up.
 	NSMutableArray *readingResults = [[NSMutableArray alloc] initWithObjects:
 									  [NSDictionary dictionaryWithObjectsAndKeys:
 									   @"Apple JSON", JBLibraryKey,
