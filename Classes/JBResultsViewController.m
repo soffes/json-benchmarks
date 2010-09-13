@@ -49,15 +49,13 @@
 	_segmentedControl.selectedSegmentIndex = 0;
 	_segmentedControl.frame = CGRectMake(0.0, 0.0, 300.0, 32.0);
 	[_segmentedControl addTarget:self.tableView action:@selector(reloadData) forControlEvents:UIControlEventValueChanged];
-	self.navigationItem.titleView = _segmentedControl;
 	
 	// Indicator
-	UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	UIActivityIndicatorViewStyle indicatorStyle = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? UIActivityIndicatorViewStyleGray : UIActivityIndicatorViewStyleWhite;
+	UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:indicatorStyle];
 	[indicator startAnimating];
-	UIBarButtonItem *indicatorItem = [[UIBarButtonItem alloc] initWithCustomView:indicator];
+	self.navigationItem.titleView = indicator;
 	[indicator release];
-	self.navigationItem.rightBarButtonItem = indicatorItem;
-	[indicatorItem release];
 }
 
 
@@ -76,8 +74,8 @@
 	_allResults = [[notification object] retain];
 	
 	// Update UI
-	self.navigationItem.rightBarButtonItem = nil;
 	_segmentedControl.enabled = YES;
+	self.navigationItem.titleView = _segmentedControl;
 	[self.tableView reloadData];
 }
 
