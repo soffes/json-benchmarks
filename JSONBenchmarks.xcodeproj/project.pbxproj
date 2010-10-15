@@ -23,12 +23,10 @@
 		B27496E7123C91B900A2A9E0 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B2749648123C91B800A2A9E0 /* SBJsonParser.m */; };
 		B27496E8123C91B900A2A9E0 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B274964A123C91B900A2A9E0 /* SBJsonWriter.m */; };
 		B2749822123C91E000A2A9E0 /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = B2749798123C91E000A2A9E0 /* CDataScanner.m */; };
-		B2749823123C91E000A2A9E0 /* CExtensibleJSONDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B274979B123C91E000A2A9E0 /* CExtensibleJSONDataSerializer.m */; };
 		B2749824123C91E000A2A9E0 /* CDataScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B274979E123C91E000A2A9E0 /* CDataScanner_Extensions.m */; };
 		B2749825123C91E000A2A9E0 /* NSCharacterSet_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B27497A0123C91E000A2A9E0 /* NSCharacterSet_Extensions.m */; };
 		B2749826123C91E000A2A9E0 /* NSDictionary_JSONExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B27497A2123C91E000A2A9E0 /* NSDictionary_JSONExtensions.m */; };
 		B2749827123C91E000A2A9E0 /* NSScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B27497A4123C91E000A2A9E0 /* NSScanner_Extensions.m */; };
-		B2749828123C91E000A2A9E0 /* CJSONDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B27497A7123C91E000A2A9E0 /* CJSONDataSerializer.m */; };
 		B2749829123C91E000A2A9E0 /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B27497A9123C91E000A2A9E0 /* CJSONDeserializer.m */; };
 		B274982A123C91E000A2A9E0 /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = B27497AB123C91E000A2A9E0 /* CJSONScanner.m */; };
 		B274982B123C91E000A2A9E0 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B27497AD123C91E000A2A9E0 /* CJSONSerializer.m */; };
@@ -124,8 +122,6 @@
 		B274964A123C91B900A2A9E0 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		B2749797123C91E000A2A9E0 /* CDataScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner.h; sourceTree = "<group>"; };
 		B2749798123C91E000A2A9E0 /* CDataScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner.m; sourceTree = "<group>"; };
-		B274979A123C91E000A2A9E0 /* CExtensibleJSONDataSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExtensibleJSONDataSerializer.h; sourceTree = "<group>"; };
-		B274979B123C91E000A2A9E0 /* CExtensibleJSONDataSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExtensibleJSONDataSerializer.m; sourceTree = "<group>"; };
 		B274979D123C91E000A2A9E0 /* CDataScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner_Extensions.h; sourceTree = "<group>"; };
 		B274979E123C91E000A2A9E0 /* CDataScanner_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner_Extensions.m; sourceTree = "<group>"; };
 		B274979F123C91E000A2A9E0 /* NSCharacterSet_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCharacterSet_Extensions.h; sourceTree = "<group>"; };
@@ -134,8 +130,6 @@
 		B27497A2123C91E000A2A9E0 /* NSDictionary_JSONExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionary_JSONExtensions.m; sourceTree = "<group>"; };
 		B27497A3123C91E000A2A9E0 /* NSScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSScanner_Extensions.h; sourceTree = "<group>"; };
 		B27497A4123C91E000A2A9E0 /* NSScanner_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSScanner_Extensions.m; sourceTree = "<group>"; };
-		B27497A6123C91E000A2A9E0 /* CJSONDataSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONDataSerializer.h; sourceTree = "<group>"; };
-		B27497A7123C91E000A2A9E0 /* CJSONDataSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONDataSerializer.m; sourceTree = "<group>"; };
 		B27497A8123C91E000A2A9E0 /* CJSONDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONDeserializer.h; sourceTree = "<group>"; };
 		B27497A9123C91E000A2A9E0 /* CJSONDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONDeserializer.m; sourceTree = "<group>"; };
 		B27497AA123C91E000A2A9E0 /* CJSONScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONScanner.h; sourceTree = "<group>"; };
@@ -311,20 +305,10 @@
 			children = (
 				B2749797123C91E000A2A9E0 /* CDataScanner.h */,
 				B2749798123C91E000A2A9E0 /* CDataScanner.m */,
-				B2749799123C91E000A2A9E0 /* Experimental */,
 				B274979C123C91E000A2A9E0 /* Extensions */,
 				B27497A5123C91E000A2A9E0 /* JSON */,
 			);
 			path = Source;
-			sourceTree = "<group>";
-		};
-		B2749799123C91E000A2A9E0 /* Experimental */ = {
-			isa = PBXGroup;
-			children = (
-				B274979A123C91E000A2A9E0 /* CExtensibleJSONDataSerializer.h */,
-				B274979B123C91E000A2A9E0 /* CExtensibleJSONDataSerializer.m */,
-			);
-			path = Experimental;
 			sourceTree = "<group>";
 		};
 		B274979C123C91E000A2A9E0 /* Extensions */ = {
@@ -345,8 +329,6 @@
 		B27497A5123C91E000A2A9E0 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				B27497A6123C91E000A2A9E0 /* CJSONDataSerializer.h */,
-				B27497A7123C91E000A2A9E0 /* CJSONDataSerializer.m */,
 				B27497A8123C91E000A2A9E0 /* CJSONDeserializer.h */,
 				B27497A9123C91E000A2A9E0 /* CJSONDeserializer.m */,
 				B27497AA123C91E000A2A9E0 /* CJSONScanner.h */,
@@ -494,12 +476,10 @@
 				B27496E7123C91B900A2A9E0 /* SBJsonParser.m in Sources */,
 				B27496E8123C91B900A2A9E0 /* SBJsonWriter.m in Sources */,
 				B2749822123C91E000A2A9E0 /* CDataScanner.m in Sources */,
-				B2749823123C91E000A2A9E0 /* CExtensibleJSONDataSerializer.m in Sources */,
 				B2749824123C91E000A2A9E0 /* CDataScanner_Extensions.m in Sources */,
 				B2749825123C91E000A2A9E0 /* NSCharacterSet_Extensions.m in Sources */,
 				B2749826123C91E000A2A9E0 /* NSDictionary_JSONExtensions.m in Sources */,
 				B2749827123C91E000A2A9E0 /* NSScanner_Extensions.m in Sources */,
-				B2749828123C91E000A2A9E0 /* CJSONDataSerializer.m in Sources */,
 				B2749829123C91E000A2A9E0 /* CJSONDeserializer.m in Sources */,
 				B274982A123C91E000A2A9E0 /* CJSONScanner.m in Sources */,
 				B274982B123C91E000A2A9E0 /* CJSONSerializer.m in Sources */,
