@@ -6,7 +6,7 @@ There is basic UI for this app. Pretty charts might be cool in the future though
 
 ## Results Summary
 
-Last updated 9/13/2010
+Last updated 10/15/2010
 
 The frameworks ranked reading in this order: [JSONKit][], [YAJL][], [Apple JSON][], [JSON Framework][], and [TouchJSON][].
 
@@ -18,13 +18,13 @@ For detailed time results, run the app on a device.
 
 You will need iOS 4.0 or greater to build the application since it uses blocks. You will also need to get the submodules with the following command:
 
-    $ git submodule init --update
+    $ git submodule update --init
 
 Then simply open the project and build normally.
 
 ## Thanks
 
-Huge thanks to [Stig Brautaset](http://github.com/stig) for improving benchmarking and a great JSON library.
+Huge thanks to [Stig Brautaset](http://github.com/stig) for improving benchmarking and keeping [JSON Framework][] up to date. Thanks to [Jonathan Wight](http://github.com/schwa) for keeping [TouchJSON][] up to date.
 
 [Apple JSON]: http://samsoff.es/posts/parsing-json-with-the-iphones-private-json-framework
 [TouchJSON]: http://github.com/schwa/TouchJSON
