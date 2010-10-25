@@ -10,7 +10,7 @@ Last updated 10/15/2010
 
 The frameworks ranked reading in this order: [JSONKit][], [YAJL][], [Apple JSON][], [JSON Framework][], and [TouchJSON][].
 
-Writing ranked in this order: [JSONKit][], [Apple JSON][],  [JSON Framework][], [YAJL][], and [TouchJSON][].
+Writing ranked in this order: [JSONKit][], [JSON Framework][], [Apple JSON][], [YAJL][], and [TouchJSON][].
 
 For detailed time results, run the app on a device.
 
