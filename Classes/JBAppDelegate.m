@@ -98,7 +98,7 @@ static inline NSTimeInterval bench(NSString *what, void (^block)(void)) {
 	// JSON Framework read
 	SBJsonParser *sbjsonParser = [[SBJsonParser new] autorelease];
 	NSTimeInterval jsonFrameworkReadAverage = bench(@"JSON Framework read", ^{
-		x([sbjsonParser objectWithString:jsonString]);
+		x([sbjsonParser objectWithData:jsonData]);
 	});
 	[readingResults addObject:[NSDictionary dictionaryWithObjectsAndKeys:
 							   @"JSON Framework", JBLibraryKey,
@@ -108,7 +108,7 @@ static inline NSTimeInterval bench(NSString *what, void (^block)(void)) {
 	// JSON Framework write
 	SBJsonWriter *sbjsonWriter = [[SBJsonWriter new] autorelease];
 	NSTimeInterval jsonFrameworkWriteAverage = bench(@"JSON Framework write", ^{
-		x([sbjsonWriter stringWithObject:array]);
+		x([sbjsonWriter dataWithObject:array]);
 	});
 	[writingResults addObject:[NSDictionary dictionaryWithObjectsAndKeys:
 							   @"JSON Framework", JBLibraryKey,
