@@ -31,7 +31,7 @@ static int _compareResults(NSDictionary *result1, NSDictionary *result2, void *c
 }
 
 // Benchmark function
-static inline NSTimeInterval bench(NSString *what, void (^block)(void)) {
+static inline void bench(NSString *what, NSString *direction, void (^block)(void), NSMutableArray *results) {
 	
 	SBStatistics *stats = [[SBStatistics new] autorelease];
 
@@ -43,8 +43,12 @@ static inline NSTimeInterval bench(NSString *what, void (^block)(void)) {
 		[pool release];
 	}
 	
-	NSLog(@"%@ min/mean/max (ms): %.3f/%.3f/%.3f - stddev: %.3f", what, stats.min, stats.mean, stats.max, [stats standardDeviation]);
-	return stats.mean;
+	[results addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+						what, JBLibraryKey,
+						[NSNumber numberWithDouble:stats.mean], JBAverageTimeKey,
+							   nil]];
+	
+	NSLog(@"%@ %@ min/mean/max (ms): %.3f/%.3f/%.3f - stddev: %.3f", what, direction, stats.min, stats.mean, stats.max, [stats standardDeviation]);
 }
 
 @implementation JBAppDelegate
@@ -77,101 +81,29 @@ static inline NSTimeInterval bench(NSString *what, void (^block)(void)) {
 	NSData *jsonData = [jsonString dataUsingEncoding:dataEncoding];
 	NSArray *array = (NSArray *)[[CJSONDeserializer deserializer] deserialize:jsonData error:nil];
 	
-	// Apple JSON read
-	NSTimeInterval appleJSONReadAverage = bench(@"Apple JSON read", ^{
-		x([JSON objectWithData:jsonData options:0 error:nil]);
-	});
-	[readingResults addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-							   @"Apple JSON", JBLibraryKey,
-							   [NSNumber numberWithDouble:appleJSONReadAverage], JBAverageTimeKey,
-							   nil]];
+	bench(@"Apple JSON", @"read", ^{ x([JSON objectWithData:jsonData options:0 error:nil]);}, readingResults);
+	bench(@"Apple JSON", @"write", ^{ x([JSON stringWithObject:array options:0 error:nil]);}, writingResults);
+
 	
-	// Apple JSON write
-	NSTimeInterval appleJSONWriteAverage = bench(@"Apple JSON write", ^{
-		x([JSON stringWithObject:array options:0 error:nil]);
-	});
-	[writingResults addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-							   @"Apple JSON", JBLibraryKey,
-							   [NSNumber numberWithDouble:appleJSONWriteAverage], JBAverageTimeKey,
-							   nil]];
-	
-	// JSON Framework read
 	SBJsonParser *sbjsonParser = [[SBJsonParser new] autorelease];
-	NSTimeInterval jsonFrameworkReadAverage = bench(@"JSON Framework read", ^{
-		x([sbjsonParser objectWithData:jsonData]);
-	});
-	[readingResults addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-							   @"JSON Framework", JBLibraryKey,
-							   [NSNumber numberWithDouble:jsonFrameworkReadAverage], JBAverageTimeKey,
-							   nil]];
-	
-	// JSON Framework write
 	SBJsonWriter *sbjsonWriter = [[SBJsonWriter new] autorelease];
-	NSTimeInterval jsonFrameworkWriteAverage = bench(@"JSON Framework write", ^{
-		x([sbjsonWriter dataWithObject:array]);
-	});
-	[writingResults addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-							   @"JSON Framework", JBLibraryKey,
-							   [NSNumber numberWithDouble:jsonFrameworkWriteAverage], JBAverageTimeKey,
-							   nil]];
+	bench(@"JSON Framework", @"read", ^{ x([sbjsonParser objectWithData:jsonData]); }, readingResults);
+	bench(@"JSON Framework", @"write", ^{ x([sbjsonWriter dataWithObject:array]); }, writingResults);
+
 	
-	// JSONKit read
 	JSONDecoder *jsonKitDecoder = [JSONDecoder decoder];
-	NSTimeInterval jsonKitReadAverage = bench(@"JSONKit read", ^{
-		x([jsonKitDecoder parseJSONData:jsonData]);
-	});
-	[readingResults addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-							   @"JSONKit", JBLibraryKey,
-							   [NSNumber numberWithDouble:jsonKitReadAverage], JBAverageTimeKey,
-							   nil]];
+	bench(@"JSONKit", @"read", ^{ x([jsonKitDecoder parseJSONData:jsonData]); }, readingResults);
+	bench(@"JSONKit", @"write", ^{ x([array JSONString]); }, writingResults);
 	
-	// JSONKit write
-	NSTimeInterval jsonKitWriteAverage = bench(@"JSONKit write", ^{
-		x([array JSONString]);
-	});
-	[writingResults addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-							   @"JSONKit", JBLibraryKey,
-							   [NSNumber numberWithDouble:jsonKitWriteAverage], JBAverageTimeKey,
-							   nil]];
-	
-	// TouchJSON read
+
 	CJSONDeserializer *cjsonDeserialiser = [CJSONDeserializer deserializer];
-	NSTimeInterval touchJSONReadAverage = bench(@"TouchJSON read", ^{
-		x([cjsonDeserialiser deserialize:jsonData error:nil]);
-	});
-	[readingResults addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-							   @"TouchJSON", JBLibraryKey,
-							   [NSNumber numberWithDouble:touchJSONReadAverage], JBAverageTimeKey,
-							   nil]];
-	
-	// TouchJSON write
 	CJSONSerializer *cjsonSerializer = [CJSONSerializer serializer];
-	NSTimeInterval touchJSONWriteAverage = bench(@"TouchJSON write", ^{
-		x([cjsonSerializer serializeArray:array error:nil]);
-	});
-	[writingResults addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-							   @"TouchJSON", JBLibraryKey,
-							   [NSNumber numberWithDouble:touchJSONWriteAverage], JBAverageTimeKey,
-							   nil]];
-	
-	// YAJL read
-	NSTimeInterval yajlReadAverage = bench(@"YAJL read", ^{
-		x([jsonString yajl_JSON]);
-	});
-	[readingResults addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-							   @"YAJL", JBLibraryKey,
-							   [NSNumber numberWithDouble:yajlReadAverage], JBAverageTimeKey,
-							   nil]];
-	
-	// YAJL write
-	NSTimeInterval yajlWriteAverage = bench(@"YAJL write", ^{
-		x([array yajl_JSONString]);
-	});
-	[writingResults addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-							   @"YAJL", JBLibraryKey,
-							   [NSNumber numberWithDouble:yajlWriteAverage], JBAverageTimeKey,
-							   nil]];
-	
+	bench(@"TouchJSON", @"read", ^{ x([cjsonDeserialiser deserialize:jsonData error:nil]); }, readingResults);
+	bench(@"TouchJSON", @"write", ^{ x([cjsonSerializer serializeArray:array error:nil]); }, writingResults);
+
+	bench(@"YAJL", @"read", ^{ x([jsonString yajl_JSON]); }, readingResults);
+	bench(@"YAJL", @"write", ^{ x([array yajl_JSONString]); }, writingResults);
+
 	// Sort results
 	[readingResults sortUsingFunction:_compareResults context:nil];
 	[writingResults sortUsingFunction:_compareResults context:nil];
