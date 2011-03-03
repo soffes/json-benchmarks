@@ -79,30 +79,30 @@ static inline void bench(NSString *what, NSString *direction, void (^block)(void
 	// Load JSON string
 	NSString *jsonString = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"twitter_public_timeline" ofType:@"json"] encoding:stringEncoding error:nil];
 	NSData *jsonData = [jsonString dataUsingEncoding:dataEncoding];
-	NSArray *array = (NSArray *)[[CJSONDeserializer deserializer] deserialize:jsonData error:nil];
+	id object = [[CJSONDeserializer deserializer] deserialize:jsonData error:nil];
 	
 	bench(@"Apple JSON", @"read", ^{ x([JSON objectWithData:jsonData options:0 error:nil]);}, readingResults);
-	bench(@"Apple JSON", @"write", ^{ x([JSON stringWithObject:array options:0 error:nil]);}, writingResults);
+	bench(@"Apple JSON", @"write", ^{ x([JSON stringWithObject:object options:0 error:nil]);}, writingResults);
 
 	
 	SBJsonParser *sbjsonParser = [[SBJsonParser new] autorelease];
 	SBJsonWriter *sbjsonWriter = [[SBJsonWriter new] autorelease];
 	bench(@"JSON Framework", @"read", ^{ x([sbjsonParser objectWithData:jsonData]); }, readingResults);
-	bench(@"JSON Framework", @"write", ^{ x([sbjsonWriter dataWithObject:array]); }, writingResults);
+	bench(@"JSON Framework", @"write", ^{ x([sbjsonWriter dataWithObject:object]); }, writingResults);
 
 	
 	JSONDecoder *jsonKitDecoder = [JSONDecoder decoder];
 	bench(@"JSONKit", @"read", ^{ x([jsonKitDecoder parseJSONData:jsonData]); }, readingResults);
-	bench(@"JSONKit", @"write", ^{ x([array JSONString]); }, writingResults);
+	bench(@"JSONKit", @"write", ^{ x([object JSONString]); }, writingResults);
 	
 
 	CJSONDeserializer *cjsonDeserialiser = [CJSONDeserializer deserializer];
 	CJSONSerializer *cjsonSerializer = [CJSONSerializer serializer];
 	bench(@"TouchJSON", @"read", ^{ x([cjsonDeserialiser deserialize:jsonData error:nil]); }, readingResults);
-	bench(@"TouchJSON", @"write", ^{ x([cjsonSerializer serializeArray:array error:nil]); }, writingResults);
+	bench(@"TouchJSON", @"write", ^{ x([cjsonSerializer serializeArray:object error:nil]); }, writingResults);
 
 	bench(@"YAJL", @"read", ^{ x([jsonString yajl_JSON]); }, readingResults);
-	bench(@"YAJL", @"write", ^{ x([array yajl_JSONString]); }, writingResults);
+	bench(@"YAJL", @"write", ^{ x([object yajl_JSONString]); }, writingResults);
 
 	// Sort results
 	[readingResults sortUsingFunction:_compareResults context:nil];
