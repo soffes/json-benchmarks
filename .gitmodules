@@ -9,7 +9,7 @@
 	url = http://github.com/johnezang/JSONKit.git
 [submodule "Classes/Vendor/TouchJSON"]
 	path = Classes/Vendor/TouchJSON
-	url = http://github.com/schwa/TouchJSON.git
+	url = https://github.com/TouchCode/TouchJSON.git
 [submodule "Classes/Vendor/Statistics"]
 	path = Classes/Vendor/Statistics
 	url = http://github.com/stig/Statistics.git
