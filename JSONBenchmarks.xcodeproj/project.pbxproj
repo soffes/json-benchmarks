@@ -41,6 +41,7 @@
 		BC8363B9123D8C2600E6F313 /* SBStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8363B5123D8C2600E6F313 /* SBStatistics.m */; };
 		BCEA0C1B1383ECFC00072AE3 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEA0C181383ECFC00072AE3 /* SBJsonStreamParserAccumulator.m */; };
 		BCEA0C1C1383ECFC00072AE3 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEA0C1A1383ECFC00072AE3 /* SBJsonStreamWriterAccumulator.m */; };
+		BCEA0C2B138497B800072AE3 /* SBStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEA0C2A138497B800072AE3 /* SBStateStack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +145,8 @@
 		BCEA0C181383ECFC00072AE3 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
 		BCEA0C191383ECFC00072AE3 /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
 		BCEA0C1A1383ECFC00072AE3 /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		BCEA0C29138497B800072AE3 /* SBStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBStateStack.h; sourceTree = "<group>"; };
+		BCEA0C2A138497B800072AE3 /* SBStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBStateStack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +324,8 @@
 		B274963F123C91B800A2A9E0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BCEA0C29138497B800072AE3 /* SBStateStack.h */,
+				BCEA0C2A138497B800072AE3 /* SBStateStack.m */,
 				BCEA0C161383ECFC00072AE3 /* SBJsonIncludes.h */,
 				BCEA0C171383ECFC00072AE3 /* SBJsonStreamParserAccumulator.h */,
 				BCEA0C181383ECFC00072AE3 /* SBJsonStreamParserAccumulator.m */,
@@ -495,6 +500,7 @@
 				B2078E901367BE95003FC4B3 /* CJSONSerializer.m in Sources */,
 				BCEA0C1B1383ECFC00072AE3 /* SBJsonStreamParserAccumulator.m in Sources */,
 				BCEA0C1C1383ECFC00072AE3 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				BCEA0C2B138497B800072AE3 /* SBStateStack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
