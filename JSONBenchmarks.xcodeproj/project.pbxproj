@@ -39,6 +39,7 @@
 		BC523CD312651D1600C70AF3 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BC523CD112651D1600C70AF3 /* SBJsonStreamWriter.m */; };
 		BC8363B7123D8C2600E6F313 /* SBFullStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8363B1123D8C2600E6F313 /* SBFullStatistics.m */; };
 		BC8363B9123D8C2600E6F313 /* SBStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8363B5123D8C2600E6F313 /* SBStatistics.m */; };
+		BCB6453B138801D2000CD9B0 /* SBUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB6453A138801D2000CD9B0 /* SBUTF8Stream.m */; };
 		BCEA0C1B1383ECFC00072AE3 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEA0C181383ECFC00072AE3 /* SBJsonStreamParserAccumulator.m */; };
 		BCEA0C1C1383ECFC00072AE3 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEA0C1A1383ECFC00072AE3 /* SBJsonStreamWriterAccumulator.m */; };
 		BCEA0C2B138497B800072AE3 /* SBStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEA0C2A138497B800072AE3 /* SBStateStack.m */; };
@@ -140,6 +141,8 @@
 		BC8363B1123D8C2600E6F313 /* SBFullStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBFullStatistics.m; path = Statistics/Classes/SBFullStatistics.m; sourceTree = "<group>"; };
 		BC8363B4123D8C2600E6F313 /* SBStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBStatistics.h; path = Statistics/Classes/SBStatistics.h; sourceTree = "<group>"; };
 		BC8363B5123D8C2600E6F313 /* SBStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBStatistics.m; path = Statistics/Classes/SBStatistics.m; sourceTree = "<group>"; };
+		BCB64539138801D2000CD9B0 /* SBUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBUTF8Stream.h; sourceTree = "<group>"; };
+		BCB6453A138801D2000CD9B0 /* SBUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBUTF8Stream.m; sourceTree = "<group>"; };
 		BCEA0C161383ECFC00072AE3 /* SBJsonIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonIncludes.h; sourceTree = "<group>"; };
 		BCEA0C171383ECFC00072AE3 /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
 		BCEA0C181383ECFC00072AE3 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
@@ -324,6 +327,8 @@
 		B274963F123C91B800A2A9E0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BCB64539138801D2000CD9B0 /* SBUTF8Stream.h */,
+				BCB6453A138801D2000CD9B0 /* SBUTF8Stream.m */,
 				BCEA0C29138497B800072AE3 /* SBStateStack.h */,
 				BCEA0C2A138497B800072AE3 /* SBStateStack.m */,
 				BCEA0C161383ECFC00072AE3 /* SBJsonIncludes.h */,
@@ -501,6 +506,7 @@
 				BCEA0C1B1383ECFC00072AE3 /* SBJsonStreamParserAccumulator.m in Sources */,
 				BCEA0C1C1383ECFC00072AE3 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				BCEA0C2B138497B800072AE3 /* SBStateStack.m in Sources */,
+				BCB6453B138801D2000CD9B0 /* SBUTF8Stream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
