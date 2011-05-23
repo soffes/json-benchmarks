@@ -39,6 +39,10 @@
 		BC523CD312651D1600C70AF3 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BC523CD112651D1600C70AF3 /* SBJsonStreamWriter.m */; };
 		BC8363B7123D8C2600E6F313 /* SBFullStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8363B1123D8C2600E6F313 /* SBFullStatistics.m */; };
 		BC8363B9123D8C2600E6F313 /* SBStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8363B5123D8C2600E6F313 /* SBStatistics.m */; };
+		BCB6453B138801D2000CD9B0 /* SBUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB6453A138801D2000CD9B0 /* SBUTF8Stream.m */; };
+		BCEA0C1B1383ECFC00072AE3 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEA0C181383ECFC00072AE3 /* SBJsonStreamParserAccumulator.m */; };
+		BCEA0C1C1383ECFC00072AE3 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEA0C1A1383ECFC00072AE3 /* SBJsonStreamWriterAccumulator.m */; };
+		BCEA0C2B138497B800072AE3 /* SBStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEA0C2A138497B800072AE3 /* SBStateStack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,24 +50,24 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = B2078E931367BEDC003FC4B3 /* YAJLiOS.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 0065977C11BEEF4000E89ABD /* libYAJLiOSDevice.a */;
+			remoteGlobalIDString = 0065977C11BEEF4000E89ABD;
 			remoteInfo = "YAJLiOS (Device)";
 		};
 		B2078EA01367BEDC003FC4B3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B2078E931367BEDC003FC4B3 /* YAJLiOS.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 006597AC11BEEF4800E89ABD /* libYAJLiOSSimulator.a */;
+			remoteGlobalIDString = 006597AC11BEEF4800E89ABD;
 			remoteInfo = "YAJLiOS (Simulator)";
 		};
 		B2078EA21367BEDC003FC4B3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B2078E931367BEDC003FC4B3 /* YAJLiOS.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 006597EA11BEEF5400E89ABD /* Tests.app */;
+			remoteGlobalIDString = 006597EA11BEEF5400E89ABD;
 			remoteInfo = Tests;
 		};
-		B2078EA51367BEE4003FC4B3 /* PBXContainerItemProxy */ = {
+		B24E392C138AD00F00E1D550 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B2078E931367BEDC003FC4B3 /* YAJLiOS.xcodeproj */;
 			proxyType = 1;
@@ -137,6 +141,15 @@
 		BC8363B1123D8C2600E6F313 /* SBFullStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBFullStatistics.m; path = Statistics/Classes/SBFullStatistics.m; sourceTree = "<group>"; };
 		BC8363B4123D8C2600E6F313 /* SBStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBStatistics.h; path = Statistics/Classes/SBStatistics.h; sourceTree = "<group>"; };
 		BC8363B5123D8C2600E6F313 /* SBStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBStatistics.m; path = Statistics/Classes/SBStatistics.m; sourceTree = "<group>"; };
+		BCB64539138801D2000CD9B0 /* SBUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBUTF8Stream.h; sourceTree = "<group>"; };
+		BCB6453A138801D2000CD9B0 /* SBUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBUTF8Stream.m; sourceTree = "<group>"; };
+		BCEA0C161383ECFC00072AE3 /* SBJsonIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonIncludes.h; sourceTree = "<group>"; };
+		BCEA0C171383ECFC00072AE3 /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		BCEA0C181383ECFC00072AE3 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		BCEA0C191383ECFC00072AE3 /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		BCEA0C1A1383ECFC00072AE3 /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		BCEA0C29138497B800072AE3 /* SBStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBStateStack.h; sourceTree = "<group>"; };
+		BCEA0C2A138497B800072AE3 /* SBStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBStateStack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +327,15 @@
 		B274963F123C91B800A2A9E0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BCB64539138801D2000CD9B0 /* SBUTF8Stream.h */,
+				BCB6453A138801D2000CD9B0 /* SBUTF8Stream.m */,
+				BCEA0C29138497B800072AE3 /* SBStateStack.h */,
+				BCEA0C2A138497B800072AE3 /* SBStateStack.m */,
+				BCEA0C161383ECFC00072AE3 /* SBJsonIncludes.h */,
+				BCEA0C171383ECFC00072AE3 /* SBJsonStreamParserAccumulator.h */,
+				BCEA0C181383ECFC00072AE3 /* SBJsonStreamParserAccumulator.m */,
+				BCEA0C191383ECFC00072AE3 /* SBJsonStreamWriterAccumulator.h */,
+				BCEA0C1A1383ECFC00072AE3 /* SBJsonStreamWriterAccumulator.m */,
 				BC3BAB7012B57A070099F494 /* NSObject+JSON.h */,
 				BC3BAB7112B57A070099F494 /* NSObject+JSON.m */,
 				BC3BAB7212B57A070099F494 /* SBJsonStreamParser.h */,
@@ -378,7 +400,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				B2078EA61367BEE4003FC4B3 /* PBXTargetDependency */,
+				B24E392D138AD00F00E1D550 /* PBXTargetDependency */,
 			);
 			name = JSONBenchmarks;
 			productName = JSONBenchmarks;
@@ -481,16 +503,20 @@
 				B2078E8E1367BE95003FC4B3 /* CJSONDeserializer.m in Sources */,
 				B2078E8F1367BE95003FC4B3 /* CJSONScanner.m in Sources */,
 				B2078E901367BE95003FC4B3 /* CJSONSerializer.m in Sources */,
+				BCEA0C1B1383ECFC00072AE3 /* SBJsonStreamParserAccumulator.m in Sources */,
+				BCEA0C1C1383ECFC00072AE3 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				BCEA0C2B138497B800072AE3 /* SBStateStack.m in Sources */,
+				BCB6453B138801D2000CD9B0 /* SBUTF8Stream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B2078EA61367BEE4003FC4B3 /* PBXTargetDependency */ = {
+		B24E392D138AD00F00E1D550 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "YAJLiOS (Device)";
-			targetProxy = B2078EA51367BEE4003FC4B3 /* PBXContainerItemProxy */;
+			targetProxy = B24E392C138AD00F00E1D550 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
