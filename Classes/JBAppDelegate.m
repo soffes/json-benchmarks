@@ -9,8 +9,6 @@
 #import "JBAppDelegate.h"
 #import "JBResultsViewController.h"
 #import "JBConstants.h"
-#import "JSONParser.h"
-#import "JSONWriter.h"
 #import "SBJsonParser.h"
 #import "SBJsonWriter.h"
 #import "JSONKit.h"
@@ -81,8 +79,8 @@ static inline void bench(NSString *what, NSString *direction, void (^block)(void
 	NSData *jsonData = [jsonString dataUsingEncoding:dataEncoding];
 	id object = [[CJSONDeserializer deserializer] deserialize:jsonData error:nil];
 
-	bench(@"Apple JSON", @"read", ^{ x([JSON objectWithData:jsonData options:0 error:nil]);}, readingResults);
-	bench(@"Apple JSON", @"write", ^{ x([JSON stringWithObject:object options:0 error:nil]);}, writingResults);
+	bench(@"NSJSONSerialization", @"read", ^{ x([NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil]);}, readingResults);
+	bench(@"NSJSONSerialization", @"write", ^{ x([[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:object options:0 error:nil] encoding:NSUTF8StringEncoding] autorelease]);}, writingResults);
 
 	SBJsonParser *sbjsonParser = [[SBJsonParser new] autorelease];
 	SBJsonWriter *sbjsonWriter = [[SBJsonWriter new] autorelease];
