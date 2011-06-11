@@ -9,8 +9,7 @@
 #import "JBAppDelegate.h"
 #import "JBResultsViewController.h"
 #import "JBConstants.h"
-#import "SBJsonParser.h"
-#import "SBJsonWriter.h"
+#import <SBJson/SBJson.h>
 #import "JSONKit.h"
 #import "CJSONDeserializer.h"
 #import "CJSONSerializer.h"
@@ -84,8 +83,8 @@ static inline void bench(NSString *what, NSString *direction, void (^block)(void
 
 	SBJsonParser *sbjsonParser = [[SBJsonParser new] autorelease];
 	SBJsonWriter *sbjsonWriter = [[SBJsonWriter new] autorelease];
-	bench(@"JSON Framework", @"read", ^{ x([sbjsonParser objectWithData:jsonData]); }, readingResults);
-	bench(@"JSON Framework", @"write", ^{ x([sbjsonWriter dataWithObject:object]); }, writingResults);
+	bench(@"SBJson", @"read", ^{ x([sbjsonParser objectWithData:jsonData]); }, readingResults);
+	bench(@"SBJson", @"write", ^{ x([sbjsonWriter dataWithObject:object]); }, writingResults);
 	
 	JSONDecoder *jsonKitDecoder = [JSONDecoder decoder];
 	bench(@"JSONKit", @"read", ^{ x([jsonKitDecoder objectWithData:jsonData]); }, readingResults);
