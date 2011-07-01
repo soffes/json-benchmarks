@@ -26,7 +26,6 @@
 		B213445410A0BA690001FE31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B213445110A0BA690001FE31 /* main.m */; };
 		B2457E8410A164A400BD3540 /* twitter_public_timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = B2457E8310A164A400BD3540 /* twitter_public_timeline.json */; };
 		B2457ED010A1671E00BD3540 /* JBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2457ECF10A1671E00BD3540 /* JBAppDelegate.m */; };
-		B2457F0710A16A0800BD3540 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2457F0610A16A0800BD3540 /* JSON.framework */; };
 		B2749907123C91F700A2A9E0 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B27498D9123C91F700A2A9E0 /* JSONKit.m */; };
 		BC2BBBE213A38B2E00D69AB5 /* libsbjson-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2BBBE113A38B2E00D69AB5 /* libsbjson-ios.a */; };
 		BC8363B7123D8C2600E6F313 /* SBFullStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8363B1123D8C2600E6F313 /* SBFullStatistics.m */; };
@@ -136,10 +135,6 @@
 		B2457E8310A164A400BD3540 /* twitter_public_timeline.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = twitter_public_timeline.json; sourceTree = "<group>"; };
 		B2457ECE10A1671E00BD3540 /* JBAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBAppDelegate.h; sourceTree = "<group>"; };
 		B2457ECF10A1671E00BD3540 /* JBAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBAppDelegate.m; sourceTree = "<group>"; };
-		B2457F0610A16A0800BD3540 /* JSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSON.framework; path = System/Library/PrivateFrameworks/JSON.framework; sourceTree = SDKROOT; };
-		B25386D511CEFCBF00608889 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
-		B25386D611CEFCBF00608889 /* JSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONParser.h; sourceTree = "<group>"; };
-		B25386D711CEFCBF00608889 /* JSONWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONWriter.h; sourceTree = "<group>"; };
 		B27498D8123C91F700A2A9E0 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		B27498D9123C91F700A2A9E0 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		BC2BBBCD13A38AE500D69AB5 /* SBJson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SBJson.xcodeproj; path = "json-framework/SBJson.xcodeproj"; sourceTree = "<group>"; };
@@ -158,7 +153,6 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
-				B2457F0710A16A0800BD3540 /* JSON.framework in Frameworks */,
 				B2078EA41367BEDF003FC4B3 /* libYAJLiOSDevice.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,7 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				BC2BBBE113A38B2E00D69AB5 /* libsbjson-ios.a */,
-				B2457F0610A16A0800BD3540 /* JSON.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -285,22 +278,11 @@
 			children = (
 				BC2BBBCD13A38AE500D69AB5 /* SBJson.xcodeproj */,
 				BC8363BA123D8C2E00E6F313 /* Statistics */,
-				B25386D411CEFCBF00608889 /* Apple JSON */,
 				B2749885123C91F700A2A9E0 /* JSONKit */,
 				B274976F123C91E000A2A9E0 /* TouchJSON */,
 				B2078E931367BEDC003FC4B3 /* YAJLiOS.xcodeproj */,
 			);
 			path = Vendor;
-			sourceTree = "<group>";
-		};
-		B25386D411CEFCBF00608889 /* Apple JSON */ = {
-			isa = PBXGroup;
-			children = (
-				B25386D511CEFCBF00608889 /* JSON.h */,
-				B25386D611CEFCBF00608889 /* JSONParser.h */,
-				B25386D711CEFCBF00608889 /* JSONWriter.h */,
-			);
-			path = "Apple JSON";
 			sourceTree = "<group>";
 		};
 		B25465FE132028E300B39371 /* Source */ = {

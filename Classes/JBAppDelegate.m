@@ -9,8 +9,6 @@
 #import "JBAppDelegate.h"
 #import "JBResultsViewController.h"
 #import "JBConstants.h"
-#import "JSONParser.h"
-#import "JSONWriter.h"
 #import <SBJson/SBJson.h>
 #import "JSONKit.h"
 #import "CJSONDeserializer.h"
@@ -79,9 +77,6 @@ static inline void bench(NSString *what, NSString *direction, void (^block)(void
 	NSString *jsonString = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"twitter_public_timeline" ofType:@"json"] encoding:stringEncoding error:nil];
 	NSData *jsonData = [jsonString dataUsingEncoding:dataEncoding];
 	id object = [[CJSONDeserializer deserializer] deserialize:jsonData error:nil];
-
-	bench(@"Apple JSON", @"read", ^{ x([JSON objectWithData:jsonData options:0 error:nil]);}, readingResults);
-	bench(@"Apple JSON", @"write", ^{ x([JSON stringWithObject:object options:0 error:nil]);}, writingResults);
 
 	SBJsonParser *sbjsonParser = [[SBJsonParser new] autorelease];
 	SBJsonWriter *sbjsonWriter = [[SBJsonWriter new] autorelease];
