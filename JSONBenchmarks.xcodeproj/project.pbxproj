@@ -27,6 +27,10 @@
 		B2457E8410A164A400BD3540 /* twitter_public_timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = B2457E8310A164A400BD3540 /* twitter_public_timeline.json */; };
 		B2457ED010A1671E00BD3540 /* JBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2457ECF10A1671E00BD3540 /* JBAppDelegate.m */; };
 		B2749907123C91F700A2A9E0 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B27498D9123C91F700A2A9E0 /* JSONKit.m */; };
+		B2CD579C13BE79B400166C10 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CD579A13BE79B400166C10 /* Default.png */; };
+		B2CD579D13BE79B400166C10 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CD579B13BE79B400166C10 /* Default@2x.png */; };
+		B2CD57A113BE7A7600166C10 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CD57A013BE7A7600166C10 /* Default-Portrait~ipad.png */; };
+		B2CD57A913BE852F00166C10 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CD57A813BE852F00166C10 /* Default-Landscape~ipad.png */; };
 		BC2BBBE213A38B2E00D69AB5 /* libsbjson-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2BBBE113A38B2E00D69AB5 /* libsbjson-ios.a */; };
 		BC8363B7123D8C2600E6F313 /* SBFullStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8363B1123D8C2600E6F313 /* SBFullStatistics.m */; };
 		BC8363B9123D8C2600E6F313 /* SBStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8363B5123D8C2600E6F313 /* SBStatistics.m */; };
@@ -137,6 +141,10 @@
 		B2457ECF10A1671E00BD3540 /* JBAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBAppDelegate.m; sourceTree = "<group>"; };
 		B27498D8123C91F700A2A9E0 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		B27498D9123C91F700A2A9E0 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		B2CD579A13BE79B400166C10 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		B2CD579B13BE79B400166C10 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		B2CD57A013BE7A7600166C10 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		B2CD57A813BE852F00166C10 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		BC2BBBCD13A38AE500D69AB5 /* SBJson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SBJson.xcodeproj; path = "json-framework/SBJson.xcodeproj"; sourceTree = "<group>"; };
 		BC2BBBE113A38B2E00D69AB5 /* libsbjson-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libsbjson-ios.a"; sourceTree = SOURCE_ROOT; };
 		BC8363B1123D8C2600E6F313 /* SBFullStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBFullStatistics.m; path = Statistics/Classes/SBFullStatistics.m; sourceTree = "<group>"; };
@@ -267,6 +275,10 @@
 		B213445210A0BA690001FE31 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B2CD57A813BE852F00166C10 /* Default-Landscape~ipad.png */,
+				B2CD57A013BE7A7600166C10 /* Default-Portrait~ipad.png */,
+				B2CD579A13BE79B400166C10 /* Default.png */,
+				B2CD579B13BE79B400166C10 /* Default@2x.png */,
 				B2457E8310A164A400BD3540 /* twitter_public_timeline.json */,
 				B213445310A0BA690001FE31 /* JSONBenchmarks-Info.plist */,
 			);
@@ -450,6 +462,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2457E8410A164A400BD3540 /* twitter_public_timeline.json in Resources */,
+				B2CD579C13BE79B400166C10 /* Default.png in Resources */,
+				B2CD579D13BE79B400166C10 /* Default@2x.png in Resources */,
+				B2CD57A113BE7A7600166C10 /* Default-Portrait~ipad.png in Resources */,
+				B2CD57A913BE852F00166C10 /* Default-Landscape~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +528,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "Classes/Vendor/yajl-objc/**";
 				INFOPLIST_FILE = "Resources/JSONBenchmarks-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -540,6 +557,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "Classes/Vendor/yajl-objc/**";
 				INFOPLIST_FILE = "Resources/JSONBenchmarks-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
