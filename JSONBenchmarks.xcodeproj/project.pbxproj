@@ -10,6 +10,10 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		45C5321A13DB4BB70034BFC4 /* NSError+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C5317713DB4BB70034BFC4 /* NSError+Extensions.m */; };
+		45C5321B13DB4BB70034BFC4 /* NXDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C5317913DB4BB70034BFC4 /* NXDebug.m */; };
+		45C5321C13DB4BB70034BFC4 /* NXJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C5317B13DB4BB70034BFC4 /* NXJsonParser.m */; };
+		45C5321D13DB4BB70034BFC4 /* NXJsonSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C5317D13DB4BB70034BFC4 /* NXJsonSerializer.m */; };
 		B20294AF123C9D4500D64200 /* JBResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20294AE123C9D4500D64200 /* JBResultsViewController.m */; };
 		B20294C2123CA12A00D64200 /* JBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B20294C1123CA12A00D64200 /* JBConstants.m */; };
 		B2078E871367BE95003FC4B3 /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = B2078E701367BE95003FC4B3 /* CDataScanner.m */; };
@@ -107,6 +111,15 @@
 		1D6058910D05DD3D006BFB54 /* JSONBenchmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONBenchmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		45C5317613DB4BB70034BFC4 /* NSError+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Extensions.h"; sourceTree = "<group>"; };
+		45C5317713DB4BB70034BFC4 /* NSError+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Extensions.m"; sourceTree = "<group>"; };
+		45C5317813DB4BB70034BFC4 /* NXDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXDebug.h; sourceTree = "<group>"; };
+		45C5317913DB4BB70034BFC4 /* NXDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXDebug.m; sourceTree = "<group>"; };
+		45C5317A13DB4BB70034BFC4 /* NXJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXJsonParser.h; sourceTree = "<group>"; };
+		45C5317B13DB4BB70034BFC4 /* NXJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXJsonParser.m; sourceTree = "<group>"; };
+		45C5317C13DB4BB70034BFC4 /* NXJsonSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXJsonSerializer.h; sourceTree = "<group>"; };
+		45C5317D13DB4BB70034BFC4 /* NXJsonSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXJsonSerializer.m; sourceTree = "<group>"; };
+		45C5317E13DB4BB70034BFC4 /* NXSerializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXSerializable.h; sourceTree = "<group>"; };
 		B20294AD123C9D4500D64200 /* JBResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBResultsViewController.h; sourceTree = "<group>"; };
 		B20294AE123C9D4500D64200 /* JBResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBResultsViewController.m; sourceTree = "<group>"; };
 		B20294C0123CA12A00D64200 /* JBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBConstants.h; sourceTree = "<group>"; };
@@ -211,6 +224,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		45C5308A13DB4BB60034BFC4 /* NextiveJson */ = {
+			isa = PBXGroup;
+			children = (
+				45C5317513DB4BB70034BFC4 /* Json */,
+			);
+			path = NextiveJson;
+			sourceTree = "<group>";
+		};
+		45C5317513DB4BB70034BFC4 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				45C5317613DB4BB70034BFC4 /* NSError+Extensions.h */,
+				45C5317713DB4BB70034BFC4 /* NSError+Extensions.m */,
+				45C5317813DB4BB70034BFC4 /* NXDebug.h */,
+				45C5317913DB4BB70034BFC4 /* NXDebug.m */,
+				45C5317A13DB4BB70034BFC4 /* NXJsonParser.h */,
+				45C5317B13DB4BB70034BFC4 /* NXJsonParser.m */,
+				45C5317C13DB4BB70034BFC4 /* NXJsonSerializer.h */,
+				45C5317D13DB4BB70034BFC4 /* NXJsonSerializer.m */,
+				45C5317E13DB4BB70034BFC4 /* NXSerializable.h */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
 		B2078E711367BE95003FC4B3 /* Experimental */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +325,7 @@
 		B2457E8510A164A800BD3540 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				45C5308A13DB4BB60034BFC4 /* NextiveJson */,
 				BC2BBBCD13A38AE500D69AB5 /* SBJson.xcodeproj */,
 				BC8363BA123D8C2E00E6F313 /* Statistics */,
 				B2749885123C91F700A2A9E0 /* JSONKit */,
@@ -493,6 +531,10 @@
 				B2078E8E1367BE95003FC4B3 /* CJSONDeserializer.m in Sources */,
 				B2078E8F1367BE95003FC4B3 /* CJSONScanner.m in Sources */,
 				B2078E901367BE95003FC4B3 /* CJSONSerializer.m in Sources */,
+				45C5321A13DB4BB70034BFC4 /* NSError+Extensions.m in Sources */,
+				45C5321B13DB4BB70034BFC4 /* NXDebug.m in Sources */,
+				45C5321C13DB4BB70034BFC4 /* NXJsonParser.m in Sources */,
+				45C5321D13DB4BB70034BFC4 /* NXJsonSerializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
