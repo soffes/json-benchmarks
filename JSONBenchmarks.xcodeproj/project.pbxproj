@@ -575,6 +575,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -604,6 +605,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
