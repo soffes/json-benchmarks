@@ -13,3 +13,6 @@
 [submodule "Classes/Vendor/Statistics"]
 	path = Classes/Vendor/Statistics
 	url = http://github.com/stig/Statistics.git
+[submodule "Classes/Vendor/NextiveJson"]
+	path = Classes/Vendor/NextiveJson
+	url = https://github.com/nextive/NextiveJson.git

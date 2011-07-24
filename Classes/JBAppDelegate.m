@@ -15,6 +15,8 @@
 #import "CJSONSerializer.h"
 #import "NSObject+YAJL.h"
 #import "SBStatistics.h"
+#import "NXJsonParser.h"
+#import "NXJsonSerializer.h"
 
 // Number of iterations to run
 #define kIterations 10
@@ -95,6 +97,11 @@ static inline void bench(NSString *what, NSString *direction, void (^block)(void
 	bench(@"YAJL", @"read", ^{ x([jsonString yajl_JSON]); }, readingResults);
 	bench(@"YAJL", @"write", ^{ x([object yajl_JSONString]); }, writingResults);
 	
+    bench(@"NextiveJson", @"read", ^{ x([NXJsonParser parseString:jsonString error:nil ignoreNulls:NO]); }, readingResults);
+    bench(@"NextiveJson", @"write", ^{ x([NXJsonSerializer serialize:object]); }, writingResults);
+
+    
+    
 	// Sort results
 	[readingResults sortUsingFunction:_compareResults context:nil];
 	[writingResults sortUsingFunction:_compareResults context:nil];
