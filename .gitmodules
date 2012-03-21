@@ -16,3 +16,6 @@
 [submodule "Classes/Vendor/NextiveJson"]
 	path = Classes/Vendor/NextiveJson
 	url = https://github.com/nextive/NextiveJson.git
+[submodule "Classes/Vendor/FXJSON"]
+	path = Classes/Vendor/FXJSON
+	url = https://github.com/nicklockwood/FXJSON.git
