@@ -6,6 +6,9 @@
 //  Copyright 2009 Sam Soffes. All rights reserved.
 //
 
+#define FXJSON_USE_NSJON_IF_AVAILABLE NO
+#define FXJSON_OMIT_NULL_OBJECT_VALUES NO
+
 #import "JBAppDelegate.h"
 #import "JBResultsViewController.h"
 #import "JBConstants.h"
@@ -17,6 +20,7 @@
 #import "SBStatistics.h"
 #import "NXJsonParser.h"
 #import "NXJsonSerializer.h"
+#import "FXJSON.h"
 
 // Number of iterations to run
 #define kIterations 10
@@ -100,6 +104,13 @@ static inline void bench(NSString *what, NSString *direction, void (^block)(void
     bench(@"NextiveJson", @"read", ^{ x([NXJsonParser parseString:jsonString error:nil ignoreNulls:NO]); }, readingResults);
     bench(@"NextiveJson", @"write", ^{ x([NXJsonSerializer serialize:object]); }, writingResults);
 
+    bench(@"FXJSON", @"read", ^{ x([FXJSON objectWithJSONData:jsonData]); }, readingResults);
+    
+    if ([NSJSONSerialization class])
+    {
+        bench(@"NSJSONSerialization", @"read", ^{ x([NSJSONSerialization JSONObjectWithData:jsonData options:0 error:NULL]); }, readingResults);
+        bench(@"NSJSONSerialization", @"write", ^{ x([NSJSONSerialization dataWithJSONObject:object options:0 error:NULL]); }, writingResults);
+    }
     
     
 	// Sort results
