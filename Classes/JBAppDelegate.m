@@ -6,9 +6,6 @@
 //  Copyright 2009 Sam Soffes. All rights reserved.
 //
 
-#define FXJSON_USE_NSJON_IF_AVAILABLE NO
-#define FXJSON_OMIT_NULL_OBJECT_VALUES NO
-
 #import "JBAppDelegate.h"
 #import "JBResultsViewController.h"
 #import "JBConstants.h"

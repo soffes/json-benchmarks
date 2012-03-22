@@ -581,6 +581,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other Sources/JSONBenchmarks_Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"FXJSON_USE_NSJON_IF_AVAILABLE=NO",
+					"FXJSON_OMIT_NULL_OBJECT_VALUES=NO",
+				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "Classes/Vendor/yajl-objc/**";
 				INFOPLIST_FILE = "Resources/JSONBenchmarks-Info.plist";
@@ -611,6 +615,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other Sources/JSONBenchmarks_Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"FXJSON_USE_NSJON_IF_AVAILABLE=NO",
+					"FXJSON_OMIT_NULL_OBJECT_VALUES=NO",
+				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "Classes/Vendor/yajl-objc/**";
 				INFOPLIST_FILE = "Resources/JSONBenchmarks-Info.plist";
