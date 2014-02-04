@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		016E1A6F151AA3330097938C /* FXJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 016E1A6E151AA3330097938C /* FXJSON.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
@@ -107,6 +108,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		016E1A6D151AA3330097938C /* FXJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FXJSON.h; path = FXJSON/FXJSON.h; sourceTree = "<group>"; };
+		016E1A6E151AA3330097938C /* FXJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FXJSON.m; path = FXJSON/FXJSON.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* JSONBenchmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONBenchmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -181,6 +184,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		016E1A62151A90070097938C /* FXJSON */ = {
+			isa = PBXGroup;
+			children = (
+				016E1A6D151AA3330097938C /* FXJSON.h */,
+				016E1A6E151AA3330097938C /* FXJSON.m */,
+			);
+			path = FXJSON;
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +343,7 @@
 				B2749885123C91F700A2A9E0 /* JSONKit */,
 				B274976F123C91E000A2A9E0 /* TouchJSON */,
 				B2078E931367BEDC003FC4B3 /* YAJLiOS.xcodeproj */,
+				016E1A62151A90070097938C /* FXJSON */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -535,6 +548,7 @@
 				45C5321B13DB4BB70034BFC4 /* NXDebug.m in Sources */,
 				45C5321C13DB4BB70034BFC4 /* NXJsonParser.m in Sources */,
 				45C5321D13DB4BB70034BFC4 /* NXJsonSerializer.m in Sources */,
+				016E1A6F151AA3330097938C /* FXJSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +581,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other Sources/JSONBenchmarks_Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"FXJSON_USE_NSJON_IF_AVAILABLE=NO",
+					"FXJSON_OMIT_NULL_OBJECT_VALUES=NO",
+				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "Classes/Vendor/yajl-objc/**";
 				INFOPLIST_FILE = "Resources/JSONBenchmarks-Info.plist";
@@ -597,6 +615,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other Sources/JSONBenchmarks_Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"FXJSON_USE_NSJON_IF_AVAILABLE=NO",
+					"FXJSON_OMIT_NULL_OBJECT_VALUES=NO",
+				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "Classes/Vendor/yajl-objc/**";
 				INFOPLIST_FILE = "Resources/JSONBenchmarks-Info.plist";
